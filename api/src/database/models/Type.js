@@ -1,15 +1,10 @@
 import { DataTypes } from 'sequelize';
 
 
-export const TypeFactory = function(sequelize){
-    return sequelize.define('Type', {
-        id: {
-            type: DataTypes.UUID,
-            primaryKey: true,
-            allowNull: false,
-        },
+export const DietFactory = (sequelize) =>{
+    return sequelize.define('Diet', {
         name: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         }
     }, {

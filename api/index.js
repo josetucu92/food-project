@@ -17,14 +17,14 @@ app.use(morgan("dev"));
 //set headers
 app.use(setHeaders);
 
-//centralizo las rutas (me traigo las rutas de mi index en la carpeta src/routes)
+//centralize my routes (bring the routes from my index in src/routes)
 app.use("/", routes);
 
-//error catching endware
+//error catching endware (last middleware)
 app.use(errorHandler);
 
 
-// 
+// set my DB connection and my express server.-
 async function main() {
     try {
         await sequelize.sync({force: true});
@@ -36,6 +36,6 @@ async function main() {
     }
 };
 
-main()
+main();
 
 

@@ -1,11 +1,11 @@
 import { Router } from "express";
-import countryRoutes from './countryRoutes.js';
-import activityRoutes from './activityRoutes.js';
+import recipeRoutes from './recipe.routes.js';
+import dietRoutes from './diet.routes.js';
 
 const router = Router()
 
-router.use('/country', countryRoutes);
-router.use('/activity', activityRoutes);
+router.use('/recipe', recipeRoutes);
+router.use('/diet', dietRoutes);
 
 
 export default router;

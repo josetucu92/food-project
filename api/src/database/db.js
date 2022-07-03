@@ -1,8 +1,9 @@
 import Sequelize from 'sequelize';
 import { dbHost, dbName, dbPassword, dbUser } from '../utils/config/index.js';
 import  { RecipeFactory } from './models/Recipe.js';
-import  { TypeFactory } from './models/Type.js';
+import  { DietFactory } from './models/Type.js';
 
+// Create a new sequelize instance with our local postgres database information.
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
     host: dbHost,
     dialect: 'postgres',
@@ -12,14 +13,15 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
 
 //inject sequelize connection to my models.-
 const Recipe = RecipeFactory(sequelize)
-const Type = TypeFactory(sequelize)
+const Diet = DietFactory(sequelize)
 
 // associations.-
-Recipe.belongsToMany(Type, { through: 'Recipe_Type' });
-Type.belongsToMany(Recipe, { through: 'Recipe_Type' });
+Recipe.belongsToMany(Diet, { through: 'Recipe_Diet' });
+Diet.belongsToMany(Recipe, { through: 'Recipe_Diet' });
 
 
 export {
     sequelize,
     Recipe,
-    Type};
+    Diet
+};

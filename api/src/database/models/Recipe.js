@@ -1,10 +1,11 @@
 import { DataTypes } from 'sequelize';
 
 
-export const RecipeFactory = function(sequelize){
+export const RecipeFactory = (sequelize) => {
     return sequelize.define('Recipe', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
             allowNull: false,
         },
@@ -23,6 +24,11 @@ export const RecipeFactory = function(sequelize){
         steps: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        createdInDb: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
         }
     },{
         timestamps: false,
