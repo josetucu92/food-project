@@ -1,9 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 import routes from "./src/routes/index.js";
-import errorHandler from "./src/utils/middlewares/errorHandler.js";
-import setHeaders from "./src/utils/middlewares/setHeaders.js";
-import { port } from "./src/utils/config/index.js";
+import errorHandler from "./src/middlewares/errorHandler.js";
+import setHeaders from "./src/middlewares/setHeaders.js";
+import { port } from "./src/utils/index.js";
 import { sequelize } from './src/database/db.js';
 
 
@@ -32,7 +32,7 @@ async function main() {
             console.log(`Server is running on port ${port}`);
         });
     } catch (error) {
-        console.error('Unable to connect to the database:', error);
+        console.error('Unable to connect:', error);
     }
 };
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { apiKey, apiKey2 } from '../utils/config/index.js';
-import { amountRecipes } from '../utils/config/index.js';
+import { apiKey, apiKey2 } from '../utils/index.js';
+import { amountRecipes } from '../utils/index.js';
 import { Recipe, Diet } from '../database/db.js';
 import { getDiets } from './diet.controllers.js';
 

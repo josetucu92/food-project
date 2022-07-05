@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
-import { dbHost, dbName, dbPassword, dbUser } from '../utils/config/index.js';
+import { dbHost, dbName, dbPassword, dbUser } from '../utils/index.js';
 import  { RecipeFactory } from './models/Recipe.js';
-import  { DietFactory } from './models/Type.js';
+import  { DietFactory } from './models/Diet.js';
 
 // Create a new sequelize instance with our local postgres database information.
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
