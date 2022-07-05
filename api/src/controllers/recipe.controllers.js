@@ -2,7 +2,7 @@ import axios from 'axios';
 import { apiKey, apiKey2 } from '../utils/config/index.js';
 import { amountRecipes } from '../utils/config/index.js';
 import { Recipe, Diet } from '../database/db.js';
-
+import { getDiets } from './diet.controllers.js';
 
 
 const getApiRecipes = async () => {
@@ -60,6 +60,7 @@ const getAllRecipes = async () => {
     }
 }
 
+// --------------------->Routes<---------------------
 
 export const getAllAndByName = async (req, res, next) => {
     try {
@@ -67,7 +68,9 @@ export const getAllAndByName = async (req, res, next) => {
         const allRecipes = await getAllRecipes();
         if (name) {
             const filteredRecipes = allRecipes.filter(recipe => recipe.name.toLowerCase().includes(name.toLowerCase()));
-            return res.status(200).send(filteredRecipes);
+            filteredRecipes.length ? 
+            res.status(200).send(filteredRecipes) :
+            res.status(404).send('No recipes found with that name');
         } else {
             return res.status(200).send(allRecipes)
         }
@@ -77,33 +80,43 @@ export const getAllAndByName = async (req, res, next) => {
 };
 
 
-export const postRecipe = async (req, res, next) => {
-    try {
-        const { name, summary, healthScore, steps } = req.body;
-        const newRecipe = await Recipe.create({
-            name,
-            summary,
-            healthScore,
-            steps
-        })
-        res.status(201).send(newRecipe)
-    } catch (error) {
-        next(error)
-    }
-};
-
 export const getRecipeById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const allRecipes = await getAllRecipes(id);
-
         if(id) {
             const recipeFiltered = allRecipes.filter(recipe => recipe.id === id);
-            return res.status(200).send(recipeFiltered)
-        } else {
-            return res.status(404).send('Recipe not found');
-        }
+            recipeFiltered.length ? 
+            res.status(200).send(recipeFiltered) :
+            res.status(404).send('No recipes found with that ID');
+        } 
+        // else {
+        //     return res.status(404).send('Recipe not found');
+        // }
     } catch (error) {
         next(error)
     }
 }
+
+
+export const postRecipe = async (req, res, next) => {
+    try {
+        const { name, summary, healthScore, steps, diets } = req.body;
+        const newRecipe = await Recipe.create({
+            name,
+            summary,
+            healthScore,
+            steps,
+            diets
+        })
+        await getDiets()
+        const findAllDiets = await Diet.findAll({
+            where: { name: diets }
+        })
+        await newRecipe.addDiets(findAllDiets)
+
+        return res.status(200).send('Recipe created')
+    } catch (error) {
+        next(error)
+    }
+};
