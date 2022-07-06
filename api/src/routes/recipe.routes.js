@@ -1,5 +1,7 @@
 import { Router } from "express";
-import { getAllAndByName, postRecipe, getRecipeById } from '../controllers/recipe.controllers.js';
+import { getAllAndByName, 
+    postRecipe, 
+    getRecipeById } from '../controllers/recipe.controllers.js';
 
 
 const router = Router()

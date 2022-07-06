@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getDiets } from "../controllers/diet.controllers.js";
+import { getApiDiets } from "../controllers/diet.controllers.js";
 
 const router = Router()
 
-router.get('/', getDiets)
+router.get('/', getApiDiets)
 
 
 export default router;

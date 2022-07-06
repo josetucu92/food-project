@@ -2,7 +2,7 @@ import axios from 'axios';
 import { apiKey, apiKey2 } from '../utils/index.js';
 import { amountRecipes } from '../utils/index.js';
 import { Recipe, Diet } from '../database/db.js';
-import { getDiets } from './diet.controllers.js';
+import { getApiDiets } from './diet.controllers.js';
 
 
 const getApiRecipes = async () => {
@@ -109,13 +109,12 @@ export const postRecipe = async (req, res, next) => {
             steps,
             diets
         })
-        await getDiets()
         const findAllDiets = await Diet.findAll({
             where: { name: diets }
         })
-        await newRecipe.addDiets(findAllDiets)
+        await newRecipe.addDiet(findAllDiets)
 
-        return res.status(200).send('Recipe created')
+        return res.status(200).send(newRecipe)
     } catch (error) {
         next(error)
     }

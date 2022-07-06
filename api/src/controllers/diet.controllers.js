@@ -3,7 +3,7 @@ import { apiKey, apiKey2 } from '../utils/index.js';
 import { amountRecipes } from '../utils/index.js';
 import { Diet } from '../database/db.js';
 
-const getApiDiets = async () => {
+export const getApiDiets = async (req, res, next) => {
     try {
         const apiResponse = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey2}&addRecipeInformation=true&number=${amountRecipes}`)
         const mapApiDiets = apiResponse.data.results.map(el => el.diets)
@@ -14,17 +14,9 @@ const getApiDiets = async () => {
                 where: { name: el}
             })
         })
+        const dietsDB = await Diet.findAll()
+        return res.status(200).send(dietsDB)
     } catch(error) {
-        console.error(error)
+        next(error)
     }
 };
-
-export const getDiets = async (req, res, next) => {
-    try {
-        await getApiDiets()
-        const dietsDB = await Diet.findAll()
-        res.send(dietsDB)
-    } catch (error) {
-        console.log(error)
-    }
-}
