@@ -42,7 +42,6 @@ export function filterAlphabetically(payload){
 }
 
 export function filterByDiet(payload){
-    console.log(payload)
     return {
         type: 'FILTER_BY_DIET_TYPE',
         payload

@@ -29,11 +29,6 @@ export default function Home() {
     const pagination = (pageNumber) => {
         setCurrentPage(pageNumber)
     };
-    
-
-
-
-
 
 
     return (

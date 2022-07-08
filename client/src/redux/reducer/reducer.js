@@ -15,27 +15,27 @@ function rootReducer(state = initialState, action){
                 allRecipes: action.payload
             };
             
-            case 'GET_ALL_DIETS':
-                return {
-                    ...state,
-                    diets: action.payload
-                }
-
-            case 'FILTER_BY_DIET_TYPE':
-                const filteredAllRecipes = state.allRecipes;
-                const statusFiltered = action.payload === 'all' ? filteredAllRecipes : filteredAllRecipes.filter(el => el.diets === action.payload)
-                return {
-                    ...state,
-                    recipes: statusFiltered
-                };
-
-
-
-        case 'GET_RECIPE_BY_NAME':
-            return{
+        
+        case 'GET_ALL_DIETS':
+            return {
                 ...state,
-                recipes: action.payload
-            }; 
+                diets: action.payload
+            }
+
+        case 'FILTER_BY_DIET_TYPE':
+            const allRecipes = state.allRecipes;
+            const all = action.payload === 'all' ? allRecipes : allRecipes.filter(el => el.diets?.includes(action.payload))
+            return {
+                ...state,
+                recipes: all
+            };
+
+
+            case 'GET_RECIPE_BY_NAME':
+                return{
+                    ...state,
+                    recipes: action.payload
+                }; 
 
         case 'SORT_ALPHABETICALLY':
             const statusSorted = action.payload === 'asc' ? 
