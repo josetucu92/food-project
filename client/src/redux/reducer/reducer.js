@@ -2,7 +2,8 @@
 
 const initialState = {
     recipes: [],
-    allRecipes: []
+    allRecipes: [],
+    diets: []
 }
 
 function rootReducer(state = initialState, action){
@@ -13,6 +14,21 @@ function rootReducer(state = initialState, action){
                 recipes: action.payload,
                 allRecipes: action.payload
             };
+            
+            case 'GET_ALL_DIETS':
+                return {
+                    ...state,
+                    diets: action.payload
+                }
+
+            case 'FILTER_BY_DIET_TYPE':
+                const filteredAllRecipes = state.allRecipes;
+                const statusFiltered = action.payload === 'all' ? filteredAllRecipes : filteredAllRecipes.filter(el => el.diets === action.payload)
+                return {
+                    ...state,
+                    recipes: statusFiltered
+                };
+
 
 
         case 'GET_RECIPE_BY_NAME':
@@ -35,6 +51,7 @@ function rootReducer(state = initialState, action){
                 ...state,
                 recipes: statusSorted
             };
+
 
             
     

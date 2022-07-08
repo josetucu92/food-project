@@ -5,7 +5,7 @@ import dietRoutes from './diet.routes.js';
 const router = Router()
 
 router.use('/recipes', recipeRoutes);
-router.use('/diet', dietRoutes);
+router.use('/diets', dietRoutes);
 
 
 export default router;

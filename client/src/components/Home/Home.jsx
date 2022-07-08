@@ -1,23 +1,38 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import { getAllRecipes, filterAlphabetically } from '../../redux/actions/actions'
+import { getAllRecipes, 
+getAllDiets,
+} from '../../redux/actions/actions'
 import RecipeCard from '../RecipeCard/Card'
 import SearchBar from '../SearchBar/SerachBar'
+import Filters from '../Filters/Filters'
+import Pagination from '../Pagination/Pagination'
 
 export default function Home() {
     const dispatch = useDispatch()
-    const recipes = useSelector(state => state.recipes)
+    const allRecipes = useSelector(state => state.recipes)
+    
 
     useEffect(()=> {
         dispatch(getAllRecipes())
+        dispatch(getAllDiets())
     },[dispatch])
 
+    const [order, setOrder] = useState('')
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recipesPerPage] = useState(1);
+    const indexOfLastRecipe = currentPage * recipesPerPage;
+    const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage
+    const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe)
 
-    const hanldeAlphabetically = (e) => {
-        e.preventDefault();
-        dispatch(filterAlphabetically(e.target.value))
-    }
+    const pagination = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    };
+    
+
+
+
 
 
 
@@ -25,15 +40,11 @@ export default function Home() {
     <div>
 
         <SearchBar/>
-
-        <select onChange={e => hanldeAlphabetically(e)}>
-            <option>Filter Alphabetically</option>
-            <option value="asc">A-Z</option>
-            <option value="desc">Z-A</option>
-        </select>
+        <Filters/>
 
 
-        {recipes?.map(el => {
+
+        {current?.map(el => {
                         return (
                                     <RecipeCard 
                                     key={el.id}
@@ -45,6 +56,12 @@ export default function Home() {
                         )
                     })
         }
+
+            <Pagination 
+                recipesPerPage={recipesPerPage}
+                allRecipes={allRecipes.length}
+                pagination={pagination}
+            />
 
     </div>
     )
