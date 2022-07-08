@@ -2,7 +2,6 @@ import axios from 'axios';
 import { apiKey, apiKey2 } from '../utils/index.js';
 import { amountRecipes } from '../utils/index.js';
 import { Recipe, Diet } from '../database/db.js';
-import { getApiDiets } from './diet.controllers.js';
 
 
 const getApiRecipes = async () => {
@@ -17,10 +16,10 @@ try {
                             summary: el.summary,
                             healthScore: el.healthScore,
                             dishTypes: el.dishTypes?.map(dish => dish),
-                            steps: el.analyzedInstructions[0]?.steps.map(el => {
+                            steps: el.analyzedInstructions[0]?.steps.map(e => {
                                 return {
-                                    number: el.number,
-                                    steps: el.steps
+                                    number: e.number,
+                                    steps: e.steps
                                 }
                             })
                         }
@@ -89,10 +88,7 @@ export const getRecipeById = async (req, res, next) => {
             recipeFiltered.length ? 
             res.status(200).send(recipeFiltered) :
             res.status(404).send('No recipes found with that ID');
-        } 
-        // else {
-        //     return res.status(404).send('Recipe not found');
-        // }
+        }
     } catch (error) {
         next(error)
     }

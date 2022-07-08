@@ -10,4 +10,4 @@ export const dbHost = process.env.DB_HOST
 export const dbPassword = process.env.DB_PASSWORD
 export const apiKey = process.env.API_KEY
 export const apiKey2 = process.env.API_KEY2
-export const amountRecipes = 1;
+export const amountRecipes = 2;
