@@ -38,19 +38,18 @@ function rootReducer(state = initialState, action){
                 }; 
 
         case 'SORT_ALPHABETICALLY':
-            const statusSorted = action.payload === 'asc' ? 
-            state.recipes.sort(function(a, b) {
-                console.log(a.name, b.name)
-                return a.name > b.name ? 1 : b.name > a.name ? -1 : 0
-            }) : 
-            state.recipes.sort(function(a, b) {
-                console.log(a.name, b.name)
-                return a.name > b.name ? -1 : b.name > a.name ? 1 : 0
-            });
-            return{
-                ...state,
-                recipes: statusSorted
-            };
+            let orden = action.payload === "asc"
+            ? state.recipes.sort((a, b) => {
+                return a.name.localeCompare(b.name)
+            })
+            : state.recipes.sort((a, b) => {
+                return b.name.localeCompare(a.name)
+            })
+
+        return {
+            ...state,
+            recipes: [...orden]
+        }
 
 
             
