@@ -1,25 +1,31 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filterAlphabetically,
-    filterByDiet } from '../../redux/actions/actions'
+    filterByDietType,
+    filterByScore } from '../../redux/actions/actions'
 
 export default function Filters() {
     const dispatch = useDispatch()
     const diets = useSelector(state => state.diets)
 
-    const hanldeAlphabetically = (e) => {
+    const handleAlphabetically = (e) => {
         e.preventDefault();
         dispatch(filterAlphabetically(e.target.value))
     }
 
     const handleDietFilter = (e) => {
         e.preventDefault();
-        dispatch(filterByDiet(e.target.value))
+        dispatch(filterByDietType(e.target.value))
+    }
+
+    const handleScoreFilter = (e) => {
+        e.preventDefault();
+        dispatch(filterByScore(e.target.value))
     }
 
     return (
         <div>
-            <select onChange={e => hanldeAlphabetically(e)}>
+            <select onChange={e => handleAlphabetically(e)}>
             <option>Filter Alphabetically</option>
             <option value="asc">A-Z</option>
             <option value="desc">Z-A</option>
@@ -32,8 +38,8 @@ export default function Filters() {
             })}
         </select>
 
-        <select>
-            <option value="all">Order by health score</option>
+        <select onChange={e => handleScoreFilter(e)}>
+            <option>Order by health score</option>
             <option value="asc">Healthiear</option>
             <option value="desc">Less helthier</option>
         </select>

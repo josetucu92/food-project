@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { apiKey, apiKey2 } from '../utils/index.js';
+import { apiKey, apiKey2, apiKey3 } from '../utils/index.js';
 import { amountRecipes } from '../utils/index.js';
 import { Recipe, Diet } from '../database/db.js';
 
 
 const getApiRecipes = async () => {
 try {
-    const apiRecipesPromise = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=${amountRecipes}`);
+    const apiRecipesPromise = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey3}&addRecipeInformation=true&number=${amountRecipes}`);
     const apiRecipes = apiRecipesPromise.data?.results.map(el => {
         return {
                             id: el.id.toString(),

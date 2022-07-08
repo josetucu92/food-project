@@ -1,11 +1,17 @@
 import axios from 'axios';
+import {GET_ALL_RECIPES,
+    GET_ALL_DIETS,
+    FILTER_BY_DIET_TYPE,
+    GET_RECIPE_BY_NAME,
+    SORT_ALPHABETICALLY,
+    FILTER_BY_SCORE } from '../constants'
 
 export function getAllRecipes(){
     return function(dispatch){
         axios
             .get('http://localhost:3001/recipes')        
             .then(recipes => dispatch({
-                type: 'GET_ALL_RECIPES',
+                type: GET_ALL_RECIPES,
                 payload: recipes.data
             }))
             .catch(err => console.log(err))
@@ -17,7 +23,7 @@ export function getAllDiets(){
         axios
             .get('http://localhost:3001/diets')
             .then(diets => 
-                dispatch({type: 'GET_ALL_DIETS', payload: diets.data}))
+                dispatch({type: GET_ALL_DIETS, payload: diets.data}))
             .catch(err => console.log(err))
     }
 }
@@ -27,7 +33,7 @@ export function getRecipeByName(name) {
     axios
         .get(`http://localhost:3001/recipes?name=${name}`)
         .then((recipe) =>
-        dispatch({ type: "GET_RECIPE_BY_NAME", payload: recipe.data})
+        dispatch({ type: GET_RECIPE_BY_NAME, payload: recipe.data})
         )
         .catch(() => alert('Recipe not found'));
     };
@@ -36,14 +42,22 @@ export function getRecipeByName(name) {
 export function filterAlphabetically(payload){
     console.log(payload)
     return {
-        type: 'SORT_ALPHABETICALLY',
+        type: SORT_ALPHABETICALLY,
         payload : payload
     }
 }
 
-export function filterByDiet(payload){
+export function filterByDietType(payload){
     return {
-        type: 'FILTER_BY_DIET_TYPE',
+        type: FILTER_BY_DIET_TYPE,
+        payload
+    }
+}
+
+export function filterByScore(payload){
+    console.log('PAYLOAD', payload)
+    return {
+        type: FILTER_BY_SCORE,
         payload
     }
 }

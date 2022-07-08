@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { apiKey, apiKey2 } from '../utils/index.js';
+import { apiKey, apiKey2, apiKey3 } from '../utils/index.js';
 import { amountRecipes } from '../utils/index.js';
 import { Diet } from '../database/db.js';
 
 export const getApiDiets = async (req, res, next) => {
     try {
-        const apiResponse = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=${amountRecipes}`)
+        const apiResponse = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey3}&addRecipeInformation=true&number=${amountRecipes}`)
         const mapApiDiets = apiResponse.data.results.map(el => el.diets)
         const apiDiets = mapApiDiets.flat(1)
         const uniqueDiet = [...new Set(apiDiets)]
