@@ -4,7 +4,8 @@ import {GET_ALL_RECIPES,
     FILTER_BY_DIET_TYPE,
     GET_RECIPE_BY_NAME,
     SORT_ALPHABETICALLY,
-    FILTER_BY_SCORE } from '../constants'
+    FILTER_BY_SCORE,
+    POST_RECIPE } from '../constants'
 
 export function getAllRecipes(){
     return function(dispatch){
@@ -59,5 +60,17 @@ export function filterByScore(payload){
     return {
         type: FILTER_BY_SCORE,
         payload
+    }
+}
+
+
+export function postRecipe(){
+    return function(dispatch){
+        axios
+            .post('http://localhost:3001/recipes')
+            .then(recipe => dispatch({
+                type: POST_RECIPE,
+                payload: recipe.data
+            }))
     }
 }

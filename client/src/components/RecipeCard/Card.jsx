@@ -10,7 +10,7 @@ export default function RecipeCard({name, img, diets, id}){
             <h3>{name}</h3>
             <img src={img} alt="img not found" />
             </Link>
-            {diets.map((el, i) => {
+            {diets?.map((el, i) => {
                 return (
                     <ul key={i}>
                         <li>{el}</li>

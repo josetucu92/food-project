@@ -3,7 +3,8 @@ import {GET_ALL_RECIPES,
     FILTER_BY_DIET_TYPE,
     GET_RECIPE_BY_NAME,
     SORT_ALPHABETICALLY,
-    FILTER_BY_SCORE } from '../constants'
+    FILTER_BY_SCORE,
+    POST_RECIPE } from '../constants'
 
 const initialState = {
     recipes: [],
@@ -68,6 +69,12 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 recipes: [...scoreSorted]
+            }
+
+        case POST_RECIPE:
+            return {
+                ...state,
+                recipe: action.payload
             }
 
 

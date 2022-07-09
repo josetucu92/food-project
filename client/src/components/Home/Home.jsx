@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getAllRecipes, 
 getAllDiets,
 } from '../../redux/actions/actions'
@@ -21,7 +22,7 @@ export default function Home() {
 
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
-    const [recipesPerPage] = useState(1);
+    const [recipesPerPage] = useState(2);
     const indexOfLastRecipe = currentPage * recipesPerPage;
     const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage
     const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe)
@@ -36,6 +37,10 @@ export default function Home() {
 
         <SearchBar/>
         <Filters/>
+        <Link to='/create'>
+            <button>Create Recipe</button>
+        </Link>
+
 
 
 
