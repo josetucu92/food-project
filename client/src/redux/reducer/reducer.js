@@ -4,12 +4,14 @@ import {GET_ALL_RECIPES,
     GET_RECIPE_BY_NAME,
     SORT_ALPHABETICALLY,
     FILTER_BY_SCORE,
-    POST_RECIPE } from '../constants'
+    POST_RECIPE,
+    GET_DETAIL } from '../constants'
 
 const initialState = {
     recipes: [],
     allRecipes: [],
-    diets: []
+    diets: [],
+    detail: {}
 }
 
 function rootReducer(state = initialState, action){
@@ -76,6 +78,13 @@ function rootReducer(state = initialState, action){
                 ...state,
                 recipes: [...state.recipes, action.payload]
             }
+
+        case GET_DETAIL:
+            return {
+                ...state,
+                detail: action.payload
+            }
+
             
     
         default:

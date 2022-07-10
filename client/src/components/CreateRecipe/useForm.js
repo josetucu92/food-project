@@ -48,7 +48,7 @@ export default function useForm(validate) {
             }
         };
     
-        const onClose = (dietDelete) => {
+        const handleDelete = (dietDelete) => {
             setInput({
                 ...input,
                 diets: input.diets.filter(diet => diet !== dietDelete)
@@ -81,7 +81,7 @@ export default function useForm(validate) {
             setInput, 
             handleSubmit, 
             handleDietChange, 
-            onClose, 
+            handleDelete, 
             errors,
         cleanInputs,
     recipeNotToRepeat}

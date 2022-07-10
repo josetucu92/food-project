@@ -12,7 +12,7 @@ export default function CreateRecipe() {
     const dispatch = useDispatch()
     const diets = useSelector(state => state.diets)
 
-    const { handleChange, input, handleSubmit, handleDietChange, onClose, errors, cleanInputs } = useForm(validate)
+    const { handleChange, input, handleSubmit, handleDietChange, handleDelete, errors, cleanInputs } = useForm(validate)
 
 
     // case user comes directly from landing page
@@ -93,7 +93,7 @@ export default function CreateRecipe() {
                             return (
                                 <div key={diet}>
                                     <div>
-                                    <button onClick={() => onClose(diet)}>X</button>
+                                    <button onClick={() => handleDelete(diet)}>X</button>
                                     </div>
                                     <h4>{diet}</h4>
                                 </div>

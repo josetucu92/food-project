@@ -5,7 +5,8 @@ import {GET_ALL_RECIPES,
     GET_RECIPE_BY_NAME,
     SORT_ALPHABETICALLY,
     FILTER_BY_SCORE,
-    POST_RECIPE } from '../constants'
+    POST_RECIPE,
+    GET_DETAIL } from '../constants'
 
 export function getAllRecipes(){
     return function(dispatch){
@@ -63,14 +64,25 @@ export function filterByScore(payload){
 }
 
 
-export function postRecipe(){
+export function postRecipe(payload){
     return function(dispatch){
         axios
-            .post('http://localhost:3001/recipes')
+            .post('http://localhost:3001/recipes', payload)
             .then(recipe => dispatch({
                 type: POST_RECIPE,
                 payload: recipe.data
             }))
+            .catch(err => console.log(err))
+    }
+}
+
+export function getRecipeDetail(id){
+    return function(dispatch){
+        axios
+            .get(`http://localhost:3001/recipes/${id}`)
+            .then(recipe => dispatch({
+                type: GET_DETAIL,
+                payload: recipe.data}))
             .catch(err => console.log(err))
     }
 }

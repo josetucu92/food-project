@@ -27,8 +27,7 @@ export default function validate(input){
         errors.steps = 'Steps should have at least 10 letters'
     } 
 
-    if(input.diets.length === 0){
-        console.log(input.diets)
+    if(input.diets.length < 0){
         errors.diets = 'Select at least one type'
     }
 
