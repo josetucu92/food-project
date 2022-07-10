@@ -74,10 +74,8 @@ function rootReducer(state = initialState, action){
         case POST_RECIPE:
             return {
                 ...state,
-                recipe: action.payload
+                recipes: [...state.recipes, action.payload]
             }
-
-
             
     
         default:
@@ -87,4 +85,4 @@ function rootReducer(state = initialState, action){
     }
 }
 
-export default rootReducer
+export default rootReducer;

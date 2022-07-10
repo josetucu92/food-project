@@ -31,17 +31,16 @@ export function getAllDiets(){
 
 export function getRecipeByName(name) {
     return function (dispatch) {
-    axios
-        .get(`http://localhost:3001/recipes?name=${name}`)
-        .then((recipe) =>
-        dispatch({ type: GET_RECIPE_BY_NAME, payload: recipe.data})
-        )
-        .catch(() => alert('Recipe not found'));
+        axios
+            .get(`http://localhost:3001/recipes?name=${name}`)
+            .then((recipe) =>
+            dispatch({ type: GET_RECIPE_BY_NAME, payload: recipe.data})
+            )
+            .catch(() => alert('Recipe not found'));
     };
 }
 
 export function filterAlphabetically(payload){
-    console.log(payload)
     return {
         type: SORT_ALPHABETICALLY,
         payload : payload
@@ -72,5 +71,6 @@ export function postRecipe(){
                 type: POST_RECIPE,
                 payload: recipe.data
             }))
+            .catch(err => console.log(err))
     }
 }

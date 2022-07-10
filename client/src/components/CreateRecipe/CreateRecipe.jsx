@@ -1,55 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getAllDiets } from '../../redux/actions/actions'
+import useForm from './useForm'
+import validate from './validate'
+import './CreateRecipe.css'
 
 
 export default function CreateRecipe() {
     const dispatch = useDispatch()
     const diets = useSelector(state => state.diets)
 
+    const { handleChange, input, handleSubmit, handleDietChange, onClose, errors, cleanInputs } = useForm(validate)
+
+
     // case user comes directly from landing page
     useEffect(()=> {
         dispatch(getAllDiets())
     }, [dispatch])
-
-    const [input, setInput] = useState({
-        name: '',
-        summary: '',
-        healthScore: '',
-        steps: '',
-        diets: []
-    })
-
-    const handleChange = (e) => {
-        e.preventDefault()
-        setInput({
-            ...input,
-            [e.target.name] : e.target.value
-        })
-        console.log(input)
-    };
-
-    const handleDietChange = (e) => {
-        e.preventDefault()
-        setInput({
-            ...input,
-            diets: [...input.diets, e.target.value]
-        })
-    }
-
-    const onClose = (dietDelete) => {
-        setInput({
-            ...input,
-            diets: input.diets.filter(diet => diet !== dietDelete)
-        })
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(input)
-    }
+    
 
     return (
         <div>
@@ -58,42 +28,52 @@ export default function CreateRecipe() {
                 <button>Go Back</button>
             </Link>
 
-            <form onSubmit={e => handleSubmit(e)}>
+            <form onSubmit={e => handleSubmit(e)}
+            className='form-inputs'>
+                
                 <div>
-                    <label>Recipe name: </label>
+                    <label>Name: </label>
                     <input type="text"
                     value={input.name}
                     name = 'name'
+                    placeholder='Enter recipe name'
                     onChange={e => handleChange(e)}
                     />
                 </div>
+                {errors.name && <p>{errors.name}</p>}
 
                 <div>
-                    <label>Dish summary: </label>
+                    <label>Summary: </label>
                     <input type="text" 
                     value={input.summary}
                     name = 'summary'
+                    placeholder='Enter recipe summary'
                     onChange={e => handleChange(e)}
                     />
                 </div>
+                {errors.summary && <p>{errors.summary}</p>}
 
                 <div>
                     <label>Healthscore: </label>
-                    <input type='text' 
+                    <input type='number' 
                     value={input.healthScore}
                     name='healthScore'
+                    placeholder='Enter recipe healthscore'
                     onChange={e => handleChange(e)}
                     />
                 </div>
+                {errors.healthScore && <p>{errors.healthScore}</p>}
 
                 <div>
                     <label>Steps: </label>
                     <input type="text" 
                     value={input.steps}
                     name = 'steps'
+                    placeholder='Enter recipe steps'
                     onChange={e => handleChange(e)}
                     />
                 </div>
+                {errors.steps && <p>{errors.steps}</p>}
 
                 <div>
                     <label>Diet Types: </label>
@@ -106,9 +86,10 @@ export default function CreateRecipe() {
                             })}
                         </select>
                 </div>
+                {errors.diets && <p>{errors.diets}</p>}
 
                 <div>
-                        {input.diets.map(diet => {
+                        {input.diets?.map(diet => {
                             return (
                                 <div key={diet}>
                                     <div>
@@ -120,9 +101,19 @@ export default function CreateRecipe() {
                         })}
                     </div>
 
-                <button type='submit'>Submit recipe</button>
+                    <div>
+                        {
+                            (Object.keys(errors).length === 0 && input.diets?.length > 0 ? 
+                            <button type='submit'>Create Recipe</button>
+                            : null)
+                        }
+                        <input type='button' onClick={e => cleanInputs(e)} value='Clean inputs'/>
+                    </div>
 
             </form>
         </div>
     )
-}
+};
+
+
+

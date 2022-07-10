@@ -16,8 +16,8 @@ const Recipe = RecipeFactory(sequelize)
 const Diet = DietFactory(sequelize)
 
 // associations.-
-Recipe.belongsToMany(Diet, { through: 'Recipe_Diet' });
-Diet.belongsToMany(Recipe, { through: 'Recipe_Diet' });
+Recipe.belongsToMany(Diet, { through: 'Recipe_Diet' }, { timestamps : false });
+Diet.belongsToMany(Recipe, { through: 'Recipe_Diet' }, { timestamps : false });
 
 
 export {
