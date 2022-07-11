@@ -64,10 +64,10 @@ export function filterByScore(payload){
 }
 
 
-export function postRecipe(payload){
+export function postRecipe(id){
     return function(dispatch){
         axios
-            .post('http://localhost:3001/recipes', payload)
+            .post('http://localhost:3001/recipes', id)
             .then(recipe => dispatch({
                 type: POST_RECIPE,
                 payload: recipe.data

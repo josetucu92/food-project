@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { postRecipe } from '../../redux/actions/actions';
-import { useNavigate } from 'react-router-dom';
 
 
 export default function useForm(validate) {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+
 
         const [input, setInput] = useState({
             name: '',
@@ -18,21 +17,32 @@ export default function useForm(validate) {
 
         const [errors, setErrors] = useState({});
 
+        const recipeNotToRepeat = (input, e) => {
+            let repeat = false
+            for (let i = 0 ; i < input.diets.length ; i++){
+                if (e.target.value === input.diets[i]){
+                    repeat = true;
+                    break;
+                }
+            }
+            return repeat;
+        };
+
         const handleChange = (e) => {
             setInput({
                 ...input,
                 [e.target.name] : e.target.value
             })
-            // console.log(input)
-            setErrors(validate(input))
+            setErrors(validate({
+                ...input,
+                [e.target.name]: e.target.value,
+            }))
         };
 
         const handleSubmit = (e) => {
             e.preventDefault()
-            // console.log(input)
             dispatch(postRecipe(input))
             alert('Recipe created!')
-            navigate('/home')
         };
 
         const handleDietChange = (e) => {
@@ -44,7 +54,8 @@ export default function useForm(validate) {
                     ...input,
                     diets: [...input.diets, e.target.value]
                 })
-                setErrors(validate(input))
+                setErrors(validate({...input,
+                diets : [...input.diets, e.target.value]}))
             }
         };
     
@@ -53,6 +64,10 @@ export default function useForm(validate) {
                 ...input,
                 diets: input.diets.filter(diet => diet !== dietDelete)
             })
+            setErrors(validate({
+                ...input,
+                diets: input.diets.filter(diet => diet !== dietDelete)
+            }))
         };
 
         const cleanInputs = () => {
@@ -65,16 +80,7 @@ export default function useForm(validate) {
             })
         };
 
-        const recipeNotToRepeat = (input, e) => {
-            let repeat = false
-            for (let i = 0 ; i < input.diets.length ; i++){
-                if (e.target.value === input.diets[i]){
-                    repeat = true;
-                    break;
-                }
-            }
-            return repeat;
-        };
+        
 
         return {handleChange, 
             input, 

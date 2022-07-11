@@ -26,7 +26,7 @@ export default function Details() {
             </div>
 
             {
-                details ?
+                details[0] ?
                 <div>
                     <h1>{details[0].name}</h1>
                     <img src={details[0].image} alt="not found" />
