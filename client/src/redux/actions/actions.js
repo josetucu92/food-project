@@ -6,7 +6,8 @@ import {GET_ALL_RECIPES,
     SORT_ALPHABETICALLY,
     FILTER_BY_SCORE,
     POST_RECIPE,
-    GET_DETAIL } from '../constants'
+    GET_DETAIL,
+    CLEAN_RECIPE_DETAIL } from '../constants'
 
 export function getAllRecipes(){
     return function(dispatch){
@@ -84,5 +85,11 @@ export function getRecipeDetail(id){
                 type: GET_DETAIL,
                 payload: recipe.data}))
             .catch(err => console.log(err))
+    }
+}
+
+export function cleanRecipeDetail(){
+    return {
+        type: CLEAN_RECIPE_DETAIL
     }
 }

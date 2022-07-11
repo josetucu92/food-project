@@ -11,4 +11,5 @@ export const dbPassword = process.env.DB_PASSWORD
 export const apiKey = process.env.API_KEY
 export const apiKey2 = process.env.API_KEY2
 export const apiKey3 = process.env.API_KEY3
-export const amountRecipes = 1;
+export const apiKey4 = process.env.API_KEY4
+export const amountRecipes = 12;

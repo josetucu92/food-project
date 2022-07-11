@@ -1,29 +1,23 @@
 import axios from 'axios';
-import { apiKey, apiKey2, apiKey3 } from '../utils/index.js';
+import { apiKey, apiKey2, apiKey3, apiKey4 } from '../utils/index.js';
 import { amountRecipes } from '../utils/index.js';
 import { Recipe, Diet } from '../database/db.js';
 
 
 const getApiRecipes = async () => {
 try {
-    const apiRecipesPromise = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey3}&addRecipeInformation=true&number=${amountRecipes}`);
+    const apiRecipesPromise = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey4}&addRecipeInformation=true&number=${amountRecipes}`);
     const apiRecipes = apiRecipesPromise.data?.results.map(el => {
         return {
                             id: el.id.toString(),
                             name: el.title,
                             image: el.image,
-                            diets: el.diets
-                            ?.map(diet => diet)
-                            ,
+                            Diets: el.diets
+                            ?.map(diet => diet),
                             summary: el.summary,
                             healthScore: el.healthScore,
                             dishTypes: el.dishTypes?.map(dish => dish),
-                            steps: el.analyzedInstructions[0]?.steps.map(e => {
-                                return {
-                                    number: e.number,
-                                    steps: e.steps
-                                }
-                            })
+                            steps: (el.analyzedInstructions[0] && el.analyzedInstructions[0].steps?el.analyzedInstructions[0].steps.map(item=>item.step).join(" "):'')
                         }
                     })
     return apiRecipes;
@@ -86,8 +80,9 @@ export const getRecipeById = async (req, res, next) => {
         const { id } = req.params;
         const allRecipes = await getAllRecipes(id);
         if(id) {
-            const recipeFiltered = allRecipes.filter(recipe => recipe.id === id);
-            recipeFiltered.length ? 
+            const recipeFiltered = allRecipes.find(recipe => recipe.id === id);
+            // console.log(recipeFiltered.id.length)
+            recipeFiltered.name.length ? 
             res.status(200).send(recipeFiltered) :
             res.status(404).send('No recipes found with that ID');
         }

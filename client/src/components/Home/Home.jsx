@@ -44,13 +44,13 @@ export default function Home() {
 
 
 
-        {current?.map(el => {
+        {current?.map((el, i) => {
                         return (
                                     <RecipeCard 
                                     key={el.id}
                                     name={el.name} 
                                     img={el.image} 
-                                    diets={el.diets}
+                                    Diets={el.createdInDb ? el.Diets.map((r, i) => <p key={i}>{r.name}</p>) : <ul><li key={i}>{JSON.stringify(el.Diets)}</li></ul> }
                                     id={el.id}
                                     />              
                         )

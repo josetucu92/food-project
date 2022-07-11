@@ -82,13 +82,15 @@ export default function useForm(validate) {
 
         
 
-        return {handleChange, 
+        return {
+            handleChange, 
             input, 
             setInput, 
             handleSubmit, 
             handleDietChange, 
             handleDelete, 
             errors,
-        cleanInputs,
-    recipeNotToRepeat}
+            cleanInputs,
+            recipeNotToRepeat
+        }
 }
