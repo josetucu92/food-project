@@ -13,6 +13,7 @@ import Pagination from '../Pagination/Pagination'
 export default function Home() {
     const dispatch = useDispatch()
     const allRecipes = useSelector(state => state.recipes)
+    //console.log(allRecipes)
     
 
     useEffect(()=> {
@@ -49,9 +50,11 @@ export default function Home() {
                                     <RecipeCard 
                                     key={el.id}
                                     name={el.name} 
-                                    img={el.image} 
-                                    Diets={el.createdInDb ? el.Diets.map((r, i) => <p key={i}>{r.name}</p>) : <ul><li key={i}>{JSON.stringify(el.Diets)}</li></ul> }
+                                    img={el.createdInDb ? 'https://img.freepik.com/free-photo/top-view-fast-food-mix-hamburger-doner-sandwich-chicken-nuggets-rice-vegetable-salad-chicken-sticks-caesar-salad-mushrooms-pizza-chicken-ragout-french-fries-mayo_141793-3997.jpg?w=312' : el.image} 
                                     id={el.id}
+                                    Diets={el.createdInDb ? el.Diets?.map((r, i) => <ul key={i}><li>{r.name}</li></ul>) : el.Diets?.map((r, i) => {
+                                        return <ul key={i}><li>{r}</li></ul>
+                                    }) }
                                     />              
                         )
                     })
