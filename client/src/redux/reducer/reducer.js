@@ -48,12 +48,13 @@ function rootReducer(state = initialState, action){
             }; 
 
         case SORT_ALPHABETICALLY:
+            console.log(state.recipes)
             const statusSorted = action.payload === 'asc' ? 
             state.recipes.sort(function(a, b) {
-                return a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : b.name.toLowerCase() > a.name.toLowerCase() ? -1 : 0
             }) : 
             state.recipes.sort(function(a, b) {
-                return a.name > b.name ? -1 : b.name > a.name ? 1 : 0
+                return a.name.toLowerCase() > b.name.toLowerCase() ? -1 : b.name.toLowerCase() > a.name.toLowerCase() ? 1 : 0
             });
             return{
                 ...state,
