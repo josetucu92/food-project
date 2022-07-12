@@ -33,7 +33,6 @@ function rootReducer(state = initialState, action){
             }
 
         case FILTER_BY_DIET_TYPE:
-            //console.log(action.payload)
             const allRecipes = state.allRecipes;
             const filtByDiets = action.payload === 'all' ? 
             allRecipes :
@@ -84,8 +83,7 @@ function rootReducer(state = initialState, action){
 
         case POST_RECIPE:
             return {
-                ...state,
-                recipes: [...state.recipes, action.payload]
+                ...state
             }
 
         case GET_DETAIL:

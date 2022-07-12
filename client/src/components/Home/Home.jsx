@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getAllRecipes, 
-getAllDiets,
+import { 
+    getAllRecipes, 
+    getAllDiets,
 } from '../../redux/actions/actions'
 import RecipeCard from '../RecipeCard/Card'
 import SearchBar from '../SearchBar/SerachBar'
@@ -13,7 +14,6 @@ import Pagination from '../Pagination/Pagination'
 export default function Home() {
     const dispatch = useDispatch()
     const allRecipes = useSelector(state => state.recipes)
-    //console.log(allRecipes)
     
 
     useEffect(()=> {
@@ -21,23 +21,23 @@ export default function Home() {
         dispatch(getAllDiets())
     },[dispatch])
 
-    //const [order, setOrder] = useState('')
-    const [currentPage, setCurrentPage] = useState(1);
-    const [recipesPerPage] = useState(5);
-    const indexOfLastRecipe = currentPage * recipesPerPage;
-    const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage
-    const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe)
 
-    const pagination = (pageNumber) => {
-        setCurrentPage(pageNumber)
-    };
+    const [currentPage, setCurrentPage] = useState(1); // NO XQ LO USAN TODOS
+    const [recipesPerPage] = useState(2); // solo paginado
+    const indexOfLastRecipe = currentPage * recipesPerPage; // solo paginado
+    const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage // solo paginado
+    const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe) //
 
 
     return (
     <div>
 
         <SearchBar setCurrentPage={setCurrentPage} />
-        <Filters setCurrentPage={setCurrentPage}/>
+        <Filters 
+        setCurrentPage={setCurrentPage}
+        getAllRecipes={getAllRecipes}
+        />
+        
         <Link to='/create'>
             <button>Create Recipe</button>
         </Link>
@@ -45,7 +45,8 @@ export default function Home() {
 
 
 
-        {current?.map((el, i) => {
+        {
+        current?.map((el, i) => {
                         return (
                                     <RecipeCard 
                                     key={el.id}
@@ -63,7 +64,7 @@ export default function Home() {
             <Pagination 
                 recipesPerPage={recipesPerPage}
                 allRecipes={allRecipes.length}
-                pagination={pagination}
+                setCurrentPage={setCurrentPage}
             />
 
     </div>

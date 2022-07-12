@@ -64,7 +64,7 @@ export default function Details() {
                         <h3>No steps provided for this recipe</h3>
                     }
                 </div> :
-                <p>Loading...</p>
+                <p>NOT FOUND 404</p>
             }
 
         </div>

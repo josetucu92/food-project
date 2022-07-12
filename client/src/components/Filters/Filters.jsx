@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { 
     filterAlphabetically,
     filterByDietType,
-    filterByScore,
-    getAllRecipes } from '../../redux/actions/actions'
+    filterByScore 
+    } from '../../redux/actions/actions'
 
-export default function Filters({setCurrentPage}) {
+export default function Filters({setCurrentPage, getAllRecipes}) {
     const dispatch = useDispatch()
     const diets = useSelector(state => state.diets)
 

@@ -43,6 +43,7 @@ export default function useForm(validate) {
             e.preventDefault()
             dispatch(postRecipe(input))
             alert('Recipe created!')
+            cleanInputs()
         };
 
         const handleDietChange = (e) => {
