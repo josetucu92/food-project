@@ -37,7 +37,7 @@ export default function Home() {
     <div>
 
         <SearchBar setCurrentPage={setCurrentPage} />
-        <Filters/>
+        <Filters setCurrentPage={setCurrentPage}/>
         <Link to='/create'>
             <button>Create Recipe</button>
         </Link>
