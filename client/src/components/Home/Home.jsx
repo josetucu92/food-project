@@ -23,7 +23,7 @@ export default function Home() {
 
 
     const [currentPage, setCurrentPage] = useState(1); // NO XQ LO USAN TODOS
-    const [recipesPerPage] = useState(2); // solo paginado
+    const [recipesPerPage] = useState(9); // solo paginado
     const indexOfLastRecipe = currentPage * recipesPerPage; // solo paginado
     const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage // solo paginado
     const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe) //
@@ -46,7 +46,7 @@ export default function Home() {
 
 
         {
-        current?.map((el, i) => {
+        current?.map((el) => {
                         return (
                                     <RecipeCard 
                                     key={el.id}

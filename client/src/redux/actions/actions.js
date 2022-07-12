@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {GET_ALL_RECIPES,
+import {
+    GET_ALL_RECIPES,
     GET_ALL_DIETS,
     FILTER_BY_DIET_TYPE,
     GET_RECIPE_BY_NAME,

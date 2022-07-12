@@ -30,7 +30,7 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 diets: action.payload
-            }
+            };
 
         case FILTER_BY_DIET_TYPE:
             const allRecipes = state.allRecipes;
@@ -79,26 +79,24 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 recipes: [...scoreSorted]
-            }
+            };
 
         case POST_RECIPE:
             return {
                 ...state
-            }
+            };
 
         case GET_DETAIL:
             return {
                 ...state,
                 detail: action.payload
-            }
+            };
 
         case CLEAN_RECIPE_DETAIL:
             return{
                 ...state,
                 detail: []
-            }
-
-            
+            };        
     
         default:
             return {
