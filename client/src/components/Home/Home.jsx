@@ -21,7 +21,7 @@ export default function Home() {
         dispatch(getAllDiets())
     },[dispatch])
 
-    const [order, setOrder] = useState('')
+    //const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const [recipesPerPage] = useState(2);
     const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -36,7 +36,7 @@ export default function Home() {
     return (
     <div>
 
-        <SearchBar/>
+        <SearchBar setCurrentPage={setCurrentPage} />
         <Filters/>
         <Link to='/create'>
             <button>Create Recipe</button>

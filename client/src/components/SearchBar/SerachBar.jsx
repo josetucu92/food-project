@@ -3,13 +3,12 @@ import { useDispatch } from 'react-redux'
 import { getRecipeByName } from '../../redux/actions/actions'
 
 
-export default function SerachBar() {
+export default function SerachBar({setCurrentPage}) {
     const dispatch = useDispatch()
 
     const [input, setInput] = useState('')
 
     const handleChange = (e) => {
-        e.preventDefault()
         setInput(e.target.value)
     }
 
@@ -17,16 +16,22 @@ export default function SerachBar() {
         e.preventDefault();
         dispatch(getRecipeByName(input))
         setInput('')
+        setCurrentPage(1)
     }
 
     return (
         <div>
-            <form onSubmit={e => handleSubmit(e)}>
-                <input type="text" 
-                onChange={e => handleChange(e)} 
-                placeholder='Search' />
+            <form>
+                <input 
+                type="text" 
+                placeholder='Search' 
+                value={input}
+                onChange={handleChange} 
+                />
                 
-                <button type='submit'>Submit</button>
+                <button type='submit'
+                onClick={handleSubmit}
+                >Submit</button>
             </form>
         </div>
     )
