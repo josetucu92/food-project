@@ -33,11 +33,17 @@ function rootReducer(state = initialState, action){
             }
 
         case FILTER_BY_DIET_TYPE:
+            //console.log(action.payload)
             const allRecipes = state.allRecipes;
-            const all = action.payload === 'all' ? allRecipes : allRecipes.filter(el => el.diets?.includes(action.payload))
+            const filtByDiets = action.payload === 'all' ? 
+            allRecipes :
+            allRecipes.filter(recipe => {
+                return recipe.Diets.find(diet =>  {
+                    return diet.name === action.payload || diet === action.payload})
+            })
             return {
                 ...state,
-                recipes: all
+                recipes: filtByDiets
             };
 
 

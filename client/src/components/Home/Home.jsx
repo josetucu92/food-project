@@ -23,7 +23,7 @@ export default function Home() {
 
     //const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
-    const [recipesPerPage] = useState(2);
+    const [recipesPerPage] = useState(5);
     const indexOfLastRecipe = currentPage * recipesPerPage;
     const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage
     const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe)

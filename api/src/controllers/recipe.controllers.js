@@ -6,7 +6,7 @@ import { Recipe, Diet } from '../database/db.js';
 
 const getApiRecipes = async () => {
 try {
-    const apiRecipesPromise = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey4}&addRecipeInformation=true&number=${amountRecipes}`);
+    const apiRecipesPromise = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey3}&addRecipeInformation=true&number=${amountRecipes}`);
     const apiRecipes = apiRecipesPromise.data?.results.map(el => {
         return {
                             id: el.id.toString(),
@@ -100,7 +100,7 @@ export const postRecipe = async (req, res, next) => {
             summary,
             healthScore,
             steps,
-            diets
+            //diets
         })
         const findAllDiets = await Diet.findAll({
             where: { name: diets }

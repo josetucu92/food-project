@@ -54,4 +54,4 @@ export default function Filters({setCurrentPage}) {
         <button onClick={handleRefresh}>Refresh Recipes</button>
         </div>
     )
-}
+};

@@ -5,7 +5,7 @@ import { Diet } from '../database/db.js';
 
 export const getApiDiets = async (req, res, next) => {
     try {
-        const apiResponse = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey4}&addRecipeInformation=true&number=${amountRecipes}`)
+        const apiResponse = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey3}&addRecipeInformation=true&number=${amountRecipes}`)
         const mapApiDiets = apiResponse.data.results.map(el => el.diets)
         const apiDiets = mapApiDiets.flat(1)
         const uniqueDiet = [...new Set(apiDiets)]
