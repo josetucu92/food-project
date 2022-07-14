@@ -22,11 +22,11 @@ export default function Home() {
     },[dispatch])
 
 
-    const [currentPage, setCurrentPage] = useState(1); // NO XQ LO USAN TODOS
-    const [recipesPerPage] = useState(9); // solo paginado
-    const indexOfLastRecipe = currentPage * recipesPerPage; // solo paginado
-    const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage // solo paginado
-    const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe) //
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recipesPerPage] = useState(2);
+    const indexOfLastRecipe = currentPage * recipesPerPage;
+    const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage;
+    const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe);
 
 
     return (

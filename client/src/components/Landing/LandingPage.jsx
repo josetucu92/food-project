@@ -1,13 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './LandingPage.css'
 
 export default function LandingPage() {
     return (
-        <div>
-            Welcome to project food
+        <div className='container'>
 
-            <Link to='/home'>Press to enter</Link>
-
+            <div className="info">
+                <h1>All Your Food. One Place.</h1> 
+                
+                    <Link to='/home' className='btn'>
+                        Press to START!
+                    </Link>
+                
+            </div>
         </div>
     )
 }
