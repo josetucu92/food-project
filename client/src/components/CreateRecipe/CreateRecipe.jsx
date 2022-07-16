@@ -55,12 +55,13 @@ export default function CreateRecipe() {
 
                 <div>
                     <label>Healthscore: </label>
-                    <input type='number' 
+                    <input type='range' 
                     value={input.healthScore}
                     name='healthScore'
                     placeholder='Enter recipe healthscore'
                     onChange={e => handleChange(e)}
                     />
+                    <i>{input.healthScore}</i>
                 </div>
                 {errors.healthScore && <p>{errors.healthScore}</p>}
 

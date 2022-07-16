@@ -5,6 +5,7 @@ import {
     filterByDietType,
     filterByScore 
     } from '../../redux/actions/actions'
+import './Filters.css'
 
 export default function Filters({setCurrentPage, getAllRecipes}) {
     const dispatch = useDispatch()
@@ -25,18 +26,14 @@ export default function Filters({setCurrentPage, getAllRecipes}) {
         setCurrentPage(1)
     };
 
-    const handleRefresh = (e) => {
-        dispatch(getAllRecipes())
-        setCurrentPage(1)
-    }
-
     return (
         <div>
+        <div className='filters-container'>
             <select onChange={handleAlphabetically}>
-            <option>Filter Alphabetically</option>
-            <option value="asc">A-Z</option>
-            <option value="desc">Z-A</option>
-        </select>
+                <option>Filter Alphabetically</option>
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+            </select>
 
         <select onChange={handleDietFilter}>
             <option value='all'>Filter by Diet Type</option>
@@ -50,8 +47,9 @@ export default function Filters({setCurrentPage, getAllRecipes}) {
             <option value="asc">Healthiear</option>
             <option value="desc">Less helthier</option>
         </select>
+        </div>
 
-        <button onClick={handleRefresh}>Refresh Recipes</button>
+        
         </div>
     )
 };

@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .container{
     background-image: url(./LandingPage-img.jpg);
@@ -15,12 +14,11 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    font-family: 'Open Sans', sans-serif;
 }
 
 .info h1{
     font-size: 2.6rem;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-weight: bold;
 }
 

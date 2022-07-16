@@ -1,0 +1,19 @@
+/* .searchbar{
+        position: absolute;
+        left: 88%;
+        top: 3%;
+        transform: translate(-50%, -50%);
+} */
+
+.searchbar form button{
+        font-size: 1em;
+        /* border-radius: 3px;
+        color: black;
+        background-color: #DF8453; */
+}
+
+.searchbar input {
+        font-size: 1em;
+        border-radius: 8px;
+        text-shadow: none;
+}

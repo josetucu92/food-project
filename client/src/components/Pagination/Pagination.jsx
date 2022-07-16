@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Pagination.css';
 
 export default function Pagination({recipesPerPage, allRecipes, setCurrentPage }){
     const pageNumber = [];
@@ -14,8 +14,8 @@ export default function Pagination({recipesPerPage, allRecipes, setCurrentPage }
     };
 
     return (
-        <div>
-            <div  className='pagination'>
+        <div className='center'>
+            <div className='pagination'>
                 {pageNumber?.map((number) => (
                     <button key={number} className='a' onClick={() => pagination(number)}>{number}</button>
                 ))}

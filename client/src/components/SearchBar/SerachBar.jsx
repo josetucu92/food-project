@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getRecipeByName } from '../../redux/actions/actions'
+import './SearchBar.css'
 
 
 export default function SerachBar({setCurrentPage}) {
@@ -20,7 +21,7 @@ export default function SerachBar({setCurrentPage}) {
     }
 
     return (
-        <div>
+        <div   className='searchbar' >
             <form>
                 <input 
                 type="text" 
