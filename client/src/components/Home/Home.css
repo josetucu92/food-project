@@ -1,9 +1,8 @@
 .home-container{
-  background-image: url(./Home-img.jpg);
+    background-image: url(./Home-img.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
-    /* position: relative; nooooooooo */
 }
 
 .wrapper{

@@ -23,95 +23,109 @@ export default function CreateRecipe() {
 
     return (
         <div>
-            <h1>Create your own recipe</h1>
+        <div className="form-container">
             <Link to='/home' >
-                <button>Go Back</button>
+                <button className='back-btn'>Go Back</button>
             </Link>
+            <div className='create-form' >
+                <h1>Create your own recipe</h1>
 
-            <form onSubmit={e => handleSubmit(e)}
-            className='form-inputs'>
+
+                <form onSubmit={e => handleSubmit(e)}
+                className='form-inputs'>
                 
-                <div>
-                    <label>Name: </label>
-                    <input type="text"
-                    value={input.name}
-                    name = 'name'
-                    placeholder='Enter recipe name'
-                    onChange={e => handleChange(e)}
-                    />
-                </div>
-                {errors.name && <p>{errors.name}</p>}
+                    <div className="form__group">
+                        <input 
+                        className="form__input"
+                        type="text"
+                        value={input.name}
+                        name = 'name'
+                        placeholder='Enter recipe name'
+                        onChange={e => handleChange(e)}
+                        />
+                        <label className="form__label">Recipe name</label>
+                    </div>
+                    {errors.name && <p>{errors.name}</p>}
 
-                <div>
-                    <label>Summary: </label>
-                    <input type="text" 
-                    value={input.summary}
-                    name = 'summary'
-                    placeholder='Enter recipe summary'
-                    onChange={e => handleChange(e)}
-                    />
-                </div>
-                {errors.summary && <p>{errors.summary}</p>}
+                    <div  className="form__group">
+                        <input 
+                        className="form__input"
+                        type="text" 
+                        value={input.summary}
+                        name = 'summary'
+                        placeholder='Enter recipe summary'
+                        onChange={e => handleChange(e)}
+                        />
+                        <label className="form__label">Summary: </label>
+                    </div>
+                    {errors.summary && <p>{errors.summary}</p>}
+                
+                    <div  className="form__group">
+                        <input 
+                        className="form__input"
+                        type="text" 
+                        value={input.steps}
+                        name = 'steps'
+                        placeholder='Enter recipe steps'
+                        onChange={e => handleChange(e)}
+                        />
+                        <label className="form__label">Steps: </label>
+                    </div>
+                    {errors.steps && <p>{errors.steps}</p>}
 
-                <div>
-                    <label>Healthscore: </label>
-                    <input type='range' 
-                    value={input.healthScore}
-                    name='healthScore'
-                    placeholder='Enter recipe healthscore'
-                    onChange={e => handleChange(e)}
-                    />
-                    <i>{input.healthScore}</i>
-                </div>
-                {errors.healthScore && <p>{errors.healthScore}</p>}
+                    <div>
+                        <label className='remaining'>Healthscore: </label>
+                        <input type='range' 
+                        value={input.healthScore}
+                        name='healthScore'
+                        placeholder='Enter recipe healthscore'
+                        onChange={e => handleChange(e)}
+                        />
+                        <i>{input.healthScore}</i>
+                    </div>
+                    {errors.healthScore && <p>{errors.healthScore}</p>}
 
-                <div>
-                    <label>Steps: </label>
-                    <input type="text" 
-                    value={input.steps}
-                    name = 'steps'
-                    placeholder='Enter recipe steps'
-                    onChange={e => handleChange(e)}
-                    />
-                </div>
-                {errors.steps && <p>{errors.steps}</p>}
-
-                <div>
-                    <label>Diet Types: </label>
+                    <div>
+                        <label className='remaining'>Diet Types: </label>
                         <select onChange={e => handleDietChange(e)}>
                             <option hidden value="Recipes">Select here</option>
-                            {diets?.map(type => {
-                                return <option key={type.id} value={type.name} >
-                                    {type.name}
+                            {diets?.map(({name, id}) => {
+                                return <option key={id} value={name} >
+                                    {name}
                                         </option>
                             })}
                         </select>
-                </div>
-                {errors.diets && <p>{errors.diets}</p>}
+                    </div>
+                    {errors.diets && <p>{errors.diets}</p>}
 
-                <div>
+                    <div>
                         {input.diets?.map(diet => {
                             return (
                                 <div key={diet}>
-                                    <div>
                                     <button onClick={() => handleDelete(diet)}>X</button>
-                                    </div>
                                     <h4>{diet}</h4>
                                 </div>
                             )
                         })}
                     </div>
 
-                    <div>
+                    <div className='sub-form'>
                         {
                             (Object.keys(errors).length === 0 && input.diets?.length > 0 ? 
-                            <button type='submit'>Create Recipe</button>
+                            <button className='sub-form-btn' type='submit'>Create Recipe</button>
                             : null)
                         }
-                        <input type='button' onClick={e => cleanInputs(e)} value='Clean inputs'/>
+                        <input 
+                            className='sub-form-btn'
+                            type='button' 
+                            value='Clean inputs'
+                            onClick={e => cleanInputs(e)} 
+                        />
                     </div>
 
-            </form>
+                </form>
+            </div>
+        </div>
         </div>
     )
 };

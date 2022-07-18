@@ -17,17 +17,6 @@ export default function useForm(validate) {
 
         const [errors, setErrors] = useState({});
 
-        const recipeNotToRepeat = (input, e) => {
-            let repeat = false
-            for (let i = 0 ; i < input.diets.length ; i++){
-                if (e.target.value === input.diets[i]){
-                    repeat = true;
-                    break;
-                }
-            }
-            return repeat;
-        };
-
         const handleChange = (e) => {
             setInput({
                 ...input,
@@ -48,9 +37,8 @@ export default function useForm(validate) {
         };
 
         const handleDietChange = (e) => {
-            let repeat = recipeNotToRepeat(input, e)
-            if(repeat){
-                alert('You cannot repeat the same diet')
+            if (input.diets.includes(e.target.value)) {
+                return alert('You have already selected that diet')
             } else {
                 setInput({
                     ...input,
@@ -93,6 +81,5 @@ export default function useForm(validate) {
             handleDelete, 
             errors,
             cleanInputs,
-            recipeNotToRepeat
         }
 }
