@@ -7,20 +7,20 @@ import RecipeCard from "../RecipeCard/Card";
 import SearchBar from "../SearchBar/SerachBar";
 import Filters from "../Filters/Filters";
 import Pagination from "../Pagination/Pagination";
-import Loading from "../Loader/Loading";
+// import Loading from "../Loader/Loading";
 import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allRecipes = useSelector(state => state.recipes);
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   //const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
+    //setLoading(true);
 		dispatch(getAllRecipes());
     dispatch(getAllDiets());
-    setLoading(false);
+    //setLoading(false);
   }, [dispatch]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,16 +62,18 @@ export default function Home() {
         </button>
       </div>
 
-      {loading && <Loading/>}
-      {current &&
-        current.map((el) => {
+      {console.log(current.length)}
+
+      <div className="content-cards">
+      {
+          current?.map((el) => {
           return (
             <RecipeCard
               key={el.id}
               name={el.name}
               img={
                 el.createdInDb
-                  ? "https://img.freepik.com/free-photo/top-view-fast-food-mix-hamburger-doner-sandwich-chicken-nuggets-rice-vegetable-salad-chicken-sticks-caesar-salad-mushrooms-pizza-chicken-ragout-french-fries-mayo_141793-3997.jpg?w=312"
+                  ? "https://img.freepik.com/free-photo/top-view-fast-food-mix-hamburger-doner-sandwich-chicken-nuggets-rice-vegetable-salad-chicken-sticks-caesar-salad-mushrooms-pizza-chicken-ragout-french-fries-mayo_141793-3997.jpg"
                   : el.image
               }
               id={el.id}
@@ -86,6 +88,7 @@ export default function Home() {
           );
         })
 			}
+      </div>
 
       <Pagination
         recipesPerPage={recipesPerPage}

@@ -59,3 +59,15 @@
     justify-content: space-between;
     width: 600px;
 }
+
+.parr{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.loading-details{
+    display: flex;
+    position: relative;
+    left: 50%;
+    top: 40%;
+}

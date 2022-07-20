@@ -2,25 +2,20 @@
 card-content
 card-diets */
 
-.main{
+/* .main{
     display: inline-flex;
     margin-right: 50px;
     margin-top: 60px;
-    /* border: 1px solid black */
 }
 
 .card-container{
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 5%;
-    /* border: solid 2px black; */
     width: 354px;
     height: 430px;
-    /* padding: 20px 20px 20px 20px; */
     margin-left: 34%;
-    /* margin-right: 12%; */
     border-radius: 15px;
-    /* border: 1px solid red; */
 }
 
 .card-content{
@@ -43,8 +38,6 @@ card-diets */
     border-bottom: 1px solid black;
     margin-bottom: 0;
     padding-bottom: 0;
-    
-    /* padding: 10px 0; */
 }
 
 .btn-card{
@@ -57,7 +50,8 @@ card-diets */
 }
 
 .card-img{
-    width: 100%;
+    width: 357px;
+    height: 254px;
     border-radius: 22px;
 }
-
+ */

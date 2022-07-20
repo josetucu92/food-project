@@ -2,8 +2,9 @@ section {
 	margin: 0;
 	height: 100vh;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+    position: absolute;
+    left: 43%;
+    top: 40%
 	/* background-color: black; */
 }
 

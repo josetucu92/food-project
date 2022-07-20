@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { getRecipeDetail, cleanRecipeDetail } from '../../redux/actions/actions'
+import Loading from '../Loader/Loading'
 import './Details.css'
 
 export default function Details() {
@@ -39,7 +40,7 @@ export default function Details() {
                 details.id ?
                 <div className='detail-content'>
                     <h1><u>{details.name}</u></h1>
-                    <p><u>Summary</u>: {details.summary?.replace(/<[^>]*>/g, '')}</p>
+                    <p className='parr'><u>Summary</u>: {details.summary?.replace(/<[^>]*>/g, '')}</p>
                     {
                         details.image?.length ?
                         <img src={details.image} alt="not found" /> :
@@ -48,7 +49,7 @@ export default function Details() {
 
                     {
                         details.steps?.length ?
-                        <p><u>Steps</u>: {JSON.stringify(details.steps)}</p> :
+                        <p className='parr'><u>Steps</u>: {JSON.stringify(details.steps)}</p> :
                         <h3>No steps provided for this recipe</h3>
                     }
                     
@@ -70,7 +71,7 @@ export default function Details() {
                 </div>
                 
                 </div> :
-                <p>NOT FOUND 404</p>
+                <Loading className='loading-details'/>
             }
 
         </div>

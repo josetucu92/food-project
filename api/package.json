@@ -5,16 +5,18 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -w ./tests/**/*.spec.js",
     "start": "nodemon -L"
   },
   "author": "jose manuel seguro",
   "license": "ISC",
   "devDependencies": {
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.18"
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "chai": "^4.3.6",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "morgan": "^1.10.0",
