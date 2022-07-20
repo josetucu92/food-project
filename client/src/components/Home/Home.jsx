@@ -62,7 +62,6 @@ export default function Home() {
         </button>
       </div>
 
-      {console.log(current.length)}
 
       <div className="content-cards">
       {
@@ -79,9 +78,9 @@ export default function Home() {
               id={el.id}
               Diets={
                 el.createdInDb
-                  ? el.Diets?.map((r, i) => <p key={i}>{r.name}</p>)
+                  ? el.Diets?.map((r, i) => <ul key={i}><li>{r.name}</li></ul>)
                   : el.Diets?.map((r, i) => {
-                      return <p key={i}>{r}</p>;
+                      return <ul key={i}><li>{r}</li></ul>;
                     })
               }
             />

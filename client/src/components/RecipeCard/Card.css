@@ -1,57 +1,31 @@
-/* card-container
-card-content
-card-diets */
-
-/* .main{
-    display: inline-flex;
-    margin-right: 50px;
-    margin-top: 60px;
-}
-
 .card-container{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 5%;
-    width: 354px;
-    height: 430px;
-    margin-left: 34%;
-    border-radius: 15px;
+    margin: 0.5rem;
+    width: 20%;
 }
 
-.card-content{
-    display: grid;
+.card-container h3{
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.card-container img{
+    width: 100%;
 }
 
 .card-diets{
     display: grid;
-    grid-template-columns: 170px 170px;
-    margin-left: 17px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    grid-template-columns: auto auto auto;
     border-bottom: 1px solid black;
 }
 
-.diets-title{
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    border-bottom: 1px solid black;
-    margin-bottom: 0;
-    padding-bottom: 0;
+.btn-container-card{
+    display: flex;
+    justify-content: center;
+
 }
 
 .btn-card{
-    text-align: center;
     text-decoration: none;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    font-size: 1.2rem;
 }
-
-.card-img{
-    width: 357px;
-    height: 254px;
-    border-radius: 22px;
-}
- */

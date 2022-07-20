@@ -150,8 +150,12 @@
   }
 
   .content-cards{
-    border: 2px solid black;
-    margin-top: 60px;
+    /* border: 2px solid black; */
+    margin-top: 4rem;
     display: flex;
     flex-direction: row;
-  }
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;           /* stetch(default), flex-start, baseline */
+    /* align-content: flex-start; */
+  }    
