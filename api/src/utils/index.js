@@ -13,4 +13,4 @@ export const apiKey2 = process.env.API_KEY2
 export const apiKey3 = process.env.API_KEY3
 export const apiKey4 = process.env.API_KEY4
 export const apiKey5 = process.env.API_KEY5
-export const amountRecipes = 16;
+export const amountRecipes = 9;

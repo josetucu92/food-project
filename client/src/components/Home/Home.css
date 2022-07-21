@@ -1,150 +1,131 @@
-.home-container{
-    background-image: url(./Home-img.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: auto;
+.home-container {
+	background-image: url(./Home-img.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+	width: auto;
 }
 
-.wrapper{
-    padding-top: 1rem;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    flex-wrap: wrap;
-    /* border: 1px solid black; */
-    justify-content: space-around;
+.wrapper {
+	padding-top: 1rem;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
 
-.searchbar{
-        /* position: absolute;
-        left: 84%;
-        top: 4%;
-        transform: translate(-50%, -50%); */
-
-        /* display: flex;
-        flex-direction: column; */
-        /* border: 1px solid red; */
-
-}
-
-.filters-container {
-    /* position: absolute;
-    left: 47%;
-    top: 4%;
-    transform: translate(-50%, -50%); */
-
-
+.home-title-container {
+	font-size: 25px;
 }
 
 
-.home-title-container{
-    /* position: absolute;
-    left: 16%;
-    top: 4%;
-    transform: translate(-50%, -50%);*/
-    font-size: 25px; 
-}
-
-/* .create-wrapper{
-  position: absolute;
-  left: 70%;
-  top: 4%;
-  transform: translate(-50%, -50%);
-} */
-
-.create{
-  font-size: 1em;
-  height: 3rem;
-  width: 9rem;
-  border: 3px solid #3082a6;
-  background: transparent;
-  color: black;
-  font-weight: bold;
-  position: relative;
-  cursor: pointer;
+.create {
+	font-size: 1em;
+	height: 3rem;
+	width: 9rem;
+	border: 3px solid #3082a6;
+	background: transparent;
+	color: black;
+	font-weight: bold;
+	position: relative;
+	cursor: pointer;
 }
 
 
-.create::before, 
-.create::after{
-  content: '';
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: inherit;
-  transition: 0.5s ease;
+.create::before,
+.create::after {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border: inherit;
+	transition: 0.5s ease;
 }
 
-.create::before{
-  left: -15px;
-  top: -15px;
-  border-width: 3px 0 0 3px;
+.create::before {
+	left: -15px;
+	top: -15px;
+	border-width: 3px 0 0 3px;
 }
 
-.create::after{
-  right: -15px;
-  bottom: -15px;
-  border-width: 0 3px 3px 0;
+.create::after {
+	right: -15px;
+	bottom: -15px;
+	border-width: 0 3px 3px 0;
 }
 
 .create:hover::after,
-.create:hover::before{
-  width: calc(100% + 27px);
-  height: calc(100% + 27px);
+.create:hover::before {
+	width: calc(100% + 27px);
+	height: calc(100% + 27px);
 }
 
 
-/* https://img.freepik.com/foto-gratis/comida-ingredientes_1220-4884.jpg?w=2000 */
-
 .title-word {
-    animation: color-animation 4s linear infinite;
-  }
-  
-  .title-word-1 {
-    --color-1: #DF8453;
-    --color-2: #3D8DAE;
-    --color-3: #E4A9A8;
-  }
-  
-  .title-word-2 {
-    --color-1: #DBAD4A;
-    --color-2: #ACCFCB;
-    --color-3: #17494D;
-  }
+	animation: color-animation 4s linear infinite;
+}
 
-  @keyframes color-animation {
-    0%    {color: var(--color-1)}
-    32%   {color: var(--color-1)}
-    33%   {color: var(--color-2)}
-    65%   {color: var(--color-2)}
-    66%   {color: var(--color-3)}
-    99%   {color: var(--color-3)}
-    100%  {color: var(--color-1)}
-  }
-  
-  /* Here are just some visual styles. 🖌 */
-  
-  .container {
-    display: grid;
-    place-items: center;  
-    text-align: center;
-    height: 100vh
-  }
-  
-  .title {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 800;
-    font-size: 8.5vw;
-    text-transform: uppercase;
-  }
+.title-word-1 {
+	--color-1: #DF8453;
+	--color-2: #3D8DAE;
+	--color-3: #E4A9A8;
+}
 
-  .content-cards{
-    /* border: 2px solid black; */
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: stretch;           /* stetch(default), flex-start, baseline */
-    /* align-content: flex-start; */
-  }    
+.title-word-2 {
+	--color-1: #DBAD4A;
+	--color-2: #ACCFCB;
+	--color-3: #17494D;
+}
+
+@keyframes color-animation {
+	0% {
+		color: var(--color-1)
+	}
+
+	32% {
+		color: var(--color-1)
+	}
+
+	33% {
+		color: var(--color-2)
+	}
+
+	65% {
+		color: var(--color-2)
+	}
+
+	66% {
+		color: var(--color-3)
+	}
+
+	99% {
+		color: var(--color-3)
+	}
+
+	100% {
+		color: var(--color-1)
+	}
+}
+
+
+.container {
+	display: grid;
+	place-items: center;
+	text-align: center;
+	height: 100vh
+}
+
+.title {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 800;
+	font-size: 8.5vw;
+}
+
+.content-cards {
+	margin-top: 3rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+}
