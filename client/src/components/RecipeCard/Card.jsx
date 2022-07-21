@@ -12,9 +12,9 @@ export default function RecipeCard({name, img, Diets, id}){
                 {Diets}
             </div>
             <div className='btn-container-card'>
-            <Link to={'/home/' + id} className='btn-card'>
-                Details
-            </Link>
+                <Link to={'/home/' + id} className='btn-card'>
+                    Details
+                </Link>
             </div>
         </div>
     )

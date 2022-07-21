@@ -24,32 +24,29 @@ export default function Home() {
   }, [dispatch]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage] = useState(9);
+  const [recipesPerPage] = useState(8);
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstCountry = indexOfLastRecipe - recipesPerPage;
   const current = allRecipes.slice(indexOfFirstCountry, indexOfLastRecipe);
 
-  const handleRefresh = (e) => {
-    dispatch(getAllRecipes());
-    setCurrentPage(1);
-  };
+
 
   return (
     <div className="home-container">
+      
       <div className="wrapper">
-        <SearchBar setCurrentPage={setCurrentPage} />
-
-        <Filters
-          setCurrentPage={setCurrentPage}
-          getAllRecipes={getAllRecipes}
-        />
-
-        <div className="home-title-container">
+      
+      <div className="home-title-container">
           <h2 className="title-home">
             <span className="title-word title-word-1">FOOD </span>
             <span className="title-word title-word-2">PROJECT</span>
           </h2>
         </div>
+
+        <Filters
+          setCurrentPage={setCurrentPage}
+          getAllRecipes={getAllRecipes}
+        />
 
         <div className="create-wrapper">
           <Link to="/create-recipe">
@@ -57,10 +54,16 @@ export default function Home() {
           </Link>
         </div>
 
-        <button className="btn-refresh" onClick={handleRefresh}>
-          Refresh Recipes
-        </button>
+
+
+        <SearchBar setCurrentPage={setCurrentPage} />
       </div>
+
+
+
+
+
+
 
 
       <div className="content-cards">

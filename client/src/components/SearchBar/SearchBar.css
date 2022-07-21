@@ -1,8 +1,6 @@
 /* .searchbar{
-        position: absolute;
-        left: 88%;
-        top: 3%;
-        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
 } */
 
 .searchbar form button{

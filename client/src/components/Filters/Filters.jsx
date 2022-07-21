@@ -26,9 +26,14 @@ export default function Filters({setCurrentPage, getAllRecipes}) {
         setCurrentPage(1)
     };
 
+    const handleRefresh = (e) => {
+        dispatch(getAllRecipes());
+        setCurrentPage(1);
+    };
+
     return (
-        <div>
         <div className='filters-container'>
+        <div className='filters'>
             <select onChange={handleAlphabetically}>
                 <option>Filter Alphabetically</option>
                 <option value="asc">A-Z</option>
@@ -48,6 +53,10 @@ export default function Filters({setCurrentPage, getAllRecipes}) {
             <option value="desc">Less helthier</option>
         </select>
         </div>
+
+        <button className="btn-refresh" onClick={handleRefresh}>
+            Refresh Recipes
+        </button>
 
         
         </div>
