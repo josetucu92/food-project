@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { getAllDiets } from '../../redux/actions/actions'
 import useForm from './useForm'
 import validate from './validate'
+import GoBackBtn from '../GoBack/GoBack'
 import './CreateRecipe.css'
 
 
@@ -24,9 +25,7 @@ export default function CreateRecipe() {
     return (
         <div>
         <div className="form-container">
-            <Link to='/home' >
-                <button className='back-btn'>Go Back</button>
-            </Link>
+            <GoBackBtn/>
             <div className='create-form' >
                 <h1>Create your own recipe</h1>
 

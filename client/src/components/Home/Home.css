@@ -1,9 +1,8 @@
 .home-container {
+	height: 100%;
 	background-image: url(./Home-img.jpg);
 	background-size: cover;
-	background-repeat: no-repeat;
-	height: 100%;
-	width: auto;
+	background-repeat: no-repeat;;
 }
 
 .wrapper {
@@ -15,7 +14,9 @@
 }
 
 .home-title-container {
-	font-size: 25px;
+	font-size: 26px;
+	position: relative;
+	top: -22%;
 }
 
 

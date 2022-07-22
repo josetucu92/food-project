@@ -6,7 +6,7 @@ import { Recipe, Diet } from '../database/db.js';
 
 export const getApiRecipes = async () => {
 try {
-    const apiRecipesPromise = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey4}&addRecipeInformation=true&number=${amountRecipes}`);
+    const apiRecipesPromise = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey2}&addRecipeInformation=true&number=${amountRecipes}`);
     const apiRecipes = apiRecipesPromise.data?.results.map(el => {
         return {
                             id: el.id.toString(),
@@ -16,9 +16,12 @@ try {
                             summary: el.summary,
                             healthScore: el.healthScore,
                             dishTypes: el.dishTypes?.map(dish => dish),
-                            steps: (el.analyzedInstructions[0] && el.analyzedInstructions[0].steps?el.analyzedInstructions[0].steps.map(item=>item.step).join(" "):'')
+                            steps: (
+                                //el.analyzedInstructions[0] && el.analyzedInstructions[0].steps ? 
+                                el.analyzedInstructions[0]?.steps?.map(item => item.step))
                         }
                     })
+                    //console.log(apiRecipes[0].steps)
     return apiRecipes;
 } catch(error) {
     console.error('Fetching the data from the API failed', error)

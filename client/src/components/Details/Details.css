@@ -1,73 +1,93 @@
 .detail-container {
     height: 100vh;
-    background-image: url(../Home/Home-img.jpg);
-    background-size: initial;
+    background-image: url(./detail-img.webp);
+    background-size: cover;
     background-repeat: no-repeat;
     display: flex;
 }
 
-.btn-container {
-    height: 40px;
-    width: 1em;
+h1 u{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 0;
 }
 
-.btn-container button{
-    /* font-size: 1rem;
-    margin: 1em;*/
-    width: 100px; 
-    position: relative;
-    top: 10px;
-    left: 10px;    
+.summary{
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    /* font-weight: 700; */
+    
 }
 
-.detail-content{
-    width: 100%;
-    height: 100%;
+.summary p{
+    width: 66%;
+    text-align: center;
+    /* background-color: #87805E; */
+}
+
+.center-detail-content{
+    padding-top: 1rem;
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    /* background-color: lightpink; */
+    height: auto;
+}
+
+.group{
+    /* background-color: lightgrey; */
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
-.detail-content img{
-    width: 33%;
-    height: 33%;
-    object-fit: fill;
+.healthscore-dish-detail{
+    /* background-color: lightskyblue; */
+    width: 75%;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid black;
+    
+}
+
+img{
+    width: 75%;
+    display: flex;
+    border-radius: 1rem;
+    border: 1px solid black;
+}
+
+.steps-wrapper{
+    width: 50%;
+    display: flex;
+}
+
+.steps-div2{
+    margin: 0.6rem 0;
+}
+
+.steps-details-div p{
     border: 1px solid black;
 }
 
 .details-diets{
-    height: 114px;
-    width: 370px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-/* .details-diets h3 u{
-    width: 150px;
-    display: block;
-} */
-
-.group{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 600px;
-}
+    /* background-color: limegreen; */
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    padding-top: 0.4rem;
+    margin-top: 0.25rem;
+    border: 1px solid black;
+    /* border-top: none; */
 
-.parr{
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.loading-details{
-    display: flex;
-    position: relative;
-    left: 50%;
-    top: 40%;
 }

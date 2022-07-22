@@ -55,7 +55,7 @@ export default function Filters({setCurrentPage, getAllRecipes}) {
         </select>
         </div>
 
-        <button className="btn-refresh" onClick={handleRefresh}>
+        <button className="button-12" onClick={handleRefresh}>
             Refresh Recipes
         </button>
 
