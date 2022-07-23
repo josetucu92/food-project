@@ -4,8 +4,29 @@
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
+}
+
+.create-form{
+    padding: 10px;
+    display: flex;
     align-items: center;
+}
+
+.cernet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    align-items: center;
+    position: relative;
+    left: 191%;
+    right: 50%;
+}
+
+.for-wrap{
+        justify-content: center;
+    align-items: center;
+    background-color: lightpink;
 }
 
 .form__label {
@@ -56,15 +77,6 @@
     font-size: 1.2rem;
 }
 
-.back-btn{
-    position: relative;
-    left: 2%;
-    top: 2%;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 2px 4px;
-}
-
 select{
     font-size: 1rem;
 }
@@ -81,7 +93,9 @@ select{
     padding: 2px 4px;
 }
 
-.create-form{
-    padding: 10px;
-    border: 2px solid black
+.delete-btn{
+    border: 1px solid rgb(205, 18, 18);
+    background-color: rgb(205, 18, 18);
+    border-radius: 7px;
 }
+

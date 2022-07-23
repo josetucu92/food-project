@@ -33,7 +33,7 @@ export default function Details() {
       <GoBackBtn />
 
       {details.id ? (
-        <div className="detail-content">
+        <div>
           <h1>
             <u>{details.name}</u>
           </h1>
