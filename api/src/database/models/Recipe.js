@@ -14,7 +14,7 @@ export const RecipeFactory = (sequelize) => {
             allowNull: false,
         },
         summary: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         healthScore: {
@@ -22,7 +22,7 @@ export const RecipeFactory = (sequelize) => {
             allowNull: true,
         },
         steps: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: true
         },
         createdInDb: {

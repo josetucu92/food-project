@@ -61,7 +61,7 @@ export default function Home() {
               name={el.name}
               img={
                 el.createdInDb
-                  ? "https://img.freepik.com/free-photo/top-view-fast-food-mix-hamburger-doner-sandwich-chicken-nuggets-rice-vegetable-salad-chicken-sticks-caesar-salad-mushrooms-pizza-chicken-ragout-french-fries-mayo_141793-3997.jpg"
+                  ? "https://www.daringgourmet.com/wp-content/uploads/2014/03/Schnitzel-5.jpg"
                   : el.image
               }
               id={el.id}

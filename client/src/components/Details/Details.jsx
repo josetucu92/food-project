@@ -32,7 +32,7 @@ export default function Details() {
     <div className="detail-container">
       <GoBackBtn />
 
-      {details.id ? (
+      {details?.id ? (
         <div>
           <h1>
             <u>{details.name}</u>
@@ -45,38 +45,31 @@ export default function Details() {
           <div className="center-detail-content">
             <div className="group">
               <div className="healthscore-dish-detail">
-
                 <div className="healthscore-detail">
-                <h3>
-                  <u>Healthscore</u>: {details.healthScore}
-                </h3>
-                </div>
-
-
-                {details.dishTypes?.length ? (
-                <div className="dish-type-detail">
                   <h3>
-                    <u>Dish type</u>: {details.dishTypes}
+                    <u>Healthscore</u> ♥ : {details.healthScore}
                   </h3>
                 </div>
-              ) : (
-                <div className="dish-type-detail">
-                  <h3>No dish type provided for this recipe</h3>
-                </div>
-              )}
 
+                {details.dishTypes?.length ? (
+                  <div className="dish-type-detail">
+                    <h3>
+                      <u>Dish type</u>: {details.dishTypes}
+                    </h3>
+                  </div>
+                ) : (
+                  <div className="dish-type-detail">
+                    <h3>No dish type provided for this recipe</h3>
+                  </div>
+                )}
               </div>
-
-              
 
               {details.image?.length ? (
                 <img src={details.image} alt="not found" />
               ) : (
                 <img
-                  src="https://img.freepik.com/free-photo/top-view-fast-food-mix-hamburger-doner-sandwich-chicken-nuggets-rice-vegetable-salad-chicken-sticks-caesar-salad-mushrooms-pizza-chicken-ragout-french-fries-mayo_141793-3997.jpg?w=2000"
+                  src="https://www.daringgourmet.com/wp-content/uploads/2014/03/Schnitzel-5.jpg"
                   alt="sdfsfd"
-                  width="312px"
-                  height="231px"
                 />
               )}
 
@@ -91,7 +84,10 @@ export default function Details() {
             </div>
 
             <div className="steps-wrapper">
-              {details.steps?.length ? (
+              {console.log(details.steps?.length)}
+              {details.createdInDb ? (
+                <p className="steps-div2">{details.steps}</p>
+              ) : (
                 <div className="steps-details-div">
                   {details.steps?.map((step, i) => {
                     return (
@@ -103,8 +99,6 @@ export default function Details() {
                     );
                   })}
                 </div>
-              ) : (
-                <h3>No steps provided for this recipe</h3>
               )}
             </div>
           </div>
