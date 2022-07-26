@@ -69,7 +69,7 @@ export default function Details() {
               ) : (
                 <img
                   src="https://www.daringgourmet.com/wp-content/uploads/2014/03/Schnitzel-5.jpg"
-                  alt="sdfsfd"
+                  alt="shnitzel"
                 />
               )}
 
