@@ -6,13 +6,13 @@
     display: flex;
 }
 
-.create-form{
+.create-form {
     padding: 10px;
     display: flex;
     align-items: center;
 }
 
-.cernet{
+.cernet {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,8 +23,8 @@
     right: 50%;
 }
 
-.for-wrap{
-        justify-content: center;
+.for-wrap {
+    justify-content: center;
     align-items: center;
     background-color: lightpink;
 }
@@ -54,7 +54,7 @@
     transition: all 0.3s;
 }
 
-.form__input:placeholder-shown + .form__label {
+.form__input:placeholder-shown+.form__label {
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(-4rem);
@@ -66,37 +66,36 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    font-size: 62,5%;
+    font-size: 62, 5%;
 }
 
-.form-inputs p{
+.form-inputs p {
     color: red;
 }
 
-.remaining{
+.remaining {
     font-size: 1.2rem;
 }
 
-select{
+select {
     font-size: 1rem;
 }
 
-.sub-form{
+.sub-form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.sub-form-btn{
+.sub-form-btn {
     font-size: 1rem;
     cursor: pointer;
     padding: 2px 4px;
 }
 
-.delete-btn{
+.delete-btn {
     /* border: 1px solid rgb(205, 18, 18);
     background: linear-gradient(to bottom right, #EF4765, #FF9A5A); */
     border-radius: 7px;
     padding: 0 0.5rem;
 }
-

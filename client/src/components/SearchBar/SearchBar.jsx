@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getRecipeByName } from "../../redux/actions/actions";
 import "./SearchBar.css";
 
-export default function SerachBar({ setCurrentPage }) {
+export const SearchBar = ({ setCurrentPage }) => {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
@@ -35,4 +35,4 @@ export default function SerachBar({ setCurrentPage }) {
       </form>
     </div>
   );
-}
+};

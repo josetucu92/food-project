@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllRecipes, getAllDiets } from "../../redux/actions/actions";
-import RecipeCard from "../RecipeCard/Card";
-import SearchBar from "../SearchBar/SerachBar";
-import Filters from "../Filters/Filters";
-import Pagination from "../Pagination/Pagination";
-import Loading from "../Loader/Loading";
+import { Filters, Pagination, RecipeCard, SearchBar } from "../../components/";
 import "./Home.css";
 
-export default function Home() {
+export const HomePage = () => {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipes);
   //const [loading, setLoading] = useState(false);
@@ -92,4 +87,4 @@ export default function Home() {
       />
     </div>
   );
-}
+};
