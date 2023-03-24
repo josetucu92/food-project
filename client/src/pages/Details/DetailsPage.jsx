@@ -1,16 +1,15 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   getRecipeDetail,
   cleanRecipeDetail,
 } from "../../redux/actions/actions";
-import Loading from "../Loader/Loading";
-import GoBackBtn from "../GoBack/GoBack";
+import Loading from "../../components/Loader/Loading";
+import GoBackBtn from "../../components/GoBack/GoBack";
 import "./Details.css";
 
-export default function Details() {
+export const DetailsPage = () => {
   const details = useSelector((state) => state.detail);
   console.log(details);
 
@@ -108,4 +107,4 @@ export default function Details() {
       )}
     </div>
   );
-}
+};
