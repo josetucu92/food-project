@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllDiets } from "../../redux/actions/actions";
 import useForm from "../../hooks/useForm";
 import validate from "./validate";
-import GoBackBtn from "../../components/GoBack/GoBack";
+import { GoBackBtn } from "../../components/";
 import "./CreateRecipe.css";
 
 export const CreateRecipePage = () => {

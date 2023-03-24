@@ -5,8 +5,8 @@ import {
   getRecipeDetail,
   cleanRecipeDetail,
 } from "../../redux/actions/actions";
-import Loading from "../../components/Loader/Loading";
-import GoBackBtn from "../../components/GoBack/GoBack";
+import { Loading } from "../../components/";
+import { GoBackBtn } from "../../components/";
 import "./Details.css";
 
 export const DetailsPage = () => {
