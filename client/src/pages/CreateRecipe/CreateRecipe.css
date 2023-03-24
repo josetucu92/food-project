@@ -1,6 +1,6 @@
 .form-container {
     height: 100vh;
-    background-image: url(../../components/Home/Home-img.jpg);
+    background-image: url(../Home/Home-img.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
