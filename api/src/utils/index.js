@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 
 dotenv.config()
 
-export const port = process.env.PORT || 3001;
+export const port = process.env.PORT || 4000;
 export const dbUser = process.env.DB_USER
 export const dbName = process.env.DB_NAME
 export const dbPort = process.env.DB_PORT
