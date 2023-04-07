@@ -5,7 +5,7 @@ import { postRecipe } from "../redux/actions/actions";
 export default function useForm(validate) {
   const dispatch = useDispatch();
 
-  const [input, setInput] = useState({
+  const [inputs, setInputs] = useState({
     name: "",
     summary: "",
     healthScore: "",
@@ -16,13 +16,13 @@ export default function useForm(validate) {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    setInput({
-      ...input,
+    setInputs({
+      ...inputs,
       [e.target.name]: e.target.value,
     });
     setErrors(
       validate({
-        ...input,
+        ...inputs,
         [e.target.name]: e.target.value,
       })
     );
@@ -30,41 +30,41 @@ export default function useForm(validate) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postRecipe(input));
+    dispatch(postRecipe(inputs));
     alert("Recipe created!");
-    console.log(input);
+    console.log(inputs);
     cleanInputs();
   };
 
   const handleDietChange = (e) => {
-    if (input.diets.includes(e.target.value)) {
+    if (inputs.diets.includes(e.target.value)) {
       return alert("You have already selected that diet");
     } else {
-      setInput({
-        ...input,
-        diets: [...input.diets, e.target.value],
+      setInputs({
+        ...inputs,
+        diets: [...inputs.diets, e.target.value],
       });
       setErrors(
-        validate({ ...input, diets: [...input.diets, e.target.value] })
+        validate({ ...inputs, diets: [...inputs.diets, e.target.value] })
       );
     }
   };
 
   const handleDelete = (dietDelete) => {
-    setInput({
-      ...input,
-      diets: input.diets.filter((diet) => diet !== dietDelete),
+    setInputs({
+      ...inputs,
+      diets: inputs.diets.filter((diet) => diet !== dietDelete),
     });
     setErrors(
       validate({
-        ...input,
-        diets: input.diets.filter((diet) => diet !== dietDelete),
+        ...inputs,
+        diets: inputs.diets.filter((diet) => diet !== dietDelete),
       })
     );
   };
 
   const cleanInputs = () => {
-    setInput({
+    setInputs({
       name: "",
       summary: "",
       healthScore: "",
@@ -75,8 +75,8 @@ export default function useForm(validate) {
 
   return {
     handleChange,
-    input,
-    setInput,
+    inputs,
+    setInputs,
     handleSubmit,
     handleDietChange,
     handleDelete,

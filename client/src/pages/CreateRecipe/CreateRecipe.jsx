@@ -4,7 +4,51 @@ import { getAllDiets } from "../../redux/actions/actions";
 import useForm from "../../hooks/useForm";
 import validate from "./validate";
 import { GoBackBtn } from "../../components/";
-import "./CreateRecipe.css";
+import styles from "./CreateRecipe.module.css";
+
+const STRINGS = {
+  title: "Create your own recipe",
+  inputs: [
+    {
+      name: "name",
+      type: "text",
+      placeholder: "Enter recipe name",
+      label: "Recipe name",
+      value: "name",
+    },
+    {
+      name: "summary",
+      type: "text",
+      placeholder: "Enter recipe summary",
+      label: "Summary",
+      value: "summary",
+    },
+    {
+      name: "steps",
+      type: "text",
+      placeholder: "Enter recipe steps",
+      label: "Steps",
+      value: "steps",
+    },
+    {
+      name: "healthScore",
+      type: "range",
+      placeholder: "Select recipe healthscore",
+      label: "Healthscore",
+      value: "healthScore",
+    },
+  ],
+  submitBtns: [
+    {
+      type: "submit",
+      text: "Create Recipe",
+    },
+    {
+      type: "button",
+      text: "Clean inputs",
+    },
+  ],
+};
 
 export const CreateRecipePage = () => {
   const dispatch = useDispatch();
@@ -12,7 +56,7 @@ export const CreateRecipePage = () => {
 
   const {
     handleChange,
-    input,
+    inputs,
     handleSubmit,
     handleDietChange,
     handleDelete,
@@ -26,114 +70,81 @@ export const CreateRecipePage = () => {
   }, [dispatch]);
 
   return (
-    <div className="form-container">
+    <div className={styles.formContainer}>
       <GoBackBtn />
 
-      <div className="create-form">
-        <div className="cernet">
-          <h1>Create your own recipe</h1>
+      <div className={styles.center}>
+        <h1>{STRINGS.title}</h1>
 
-          <form onSubmit={(e) => handleSubmit(e)} className="form-inputs">
-            <div className="form__group">
-              <input
-                className="form__input"
-                type="text"
-                value={input.name}
-                name="name"
-                placeholder="Enter recipe name"
-                onChange={(e) => handleChange(e)}
-              />
-              <label className="form__label">Recipe name</label>
-            </div>
-            {errors.name && <p>{errors.name}</p>}
-
-            <div className="form__group">
-              <input
-                className="form__input"
-                type="text"
-                value={input.summary}
-                name="summary"
-                placeholder="Enter recipe summary"
-                onChange={(e) => handleChange(e)}
-              />
-              <label className="form__label">Summary: </label>
-            </div>
-            {errors.summary && <p>{errors.summary}</p>}
-
-            <div className="form__group">
-              <input
-                className="form__input"
-                type="text"
-                value={input.steps}
-                name="steps"
-                placeholder="Enter recipe steps"
-                onChange={(e) => handleChange(e)}
-              />
-              <label className="form__label">Steps: </label>
-            </div>
-            {errors.steps && <p>{errors.steps}</p>}
-
-            <div>
-              <label className="remaining">Healthscore: </label>
-              <input
-                type="range"
-                value={input.healthScore}
-                name="healthScore"
-                placeholder="Enter recipe healthscore"
-                onChange={(e) => handleChange(e)}
-              />
-              <i>{input.healthScore}</i>
-            </div>
-            {errors.healthScore && <p>{errors.healthScore}</p>}
-
-            <div>
-              <label className="remaining">Diet Types: </label>
-              <select onChange={(e) => handleDietChange(e)}>
-                <option hidden value="Recipes">
-                  Select here
-                </option>
-                {diets?.map(({ name, id }) => {
-                  return (
-                    <option key={id} value={name}>
-                      {name}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            {errors.diets && <p>{errors.diets}</p>}
-
-            <div>
-              {input.diets?.map((diet) => {
-                return (
-                  <div key={diet}>
-                    <button
-                      onClick={() => handleDelete(diet)}
-                      className="delete-btn"
-                    >
-                      Delete
-                    </button>
-                    <h4>{diet}</h4>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="sub-form">
-              {Object.keys(errors).length === 0 && input.diets?.length > 0 && (
-                <button className="sub-form-btn" type="submit">
-                  Create Recipe
-                </button>
+        <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
+          {STRINGS.inputs.map((input) => (
+            <div key={input.name}>
+              {input.name === "healthScore" && (
+                <label className={styles.remaining}>
+                  {input.placeholder}: {inputs.healthScore}
+                </label>
               )}
               <input
-                className="sub-form-btn"
-                type="button"
-                value="Clean inputs"
-                onClick={(e) => cleanInputs(e)}
+                className={styles.formInput}
+                type={input.type}
+                value={inputs[input.value]}
+                name={input.name}
+                placeholder={input.placeholder}
+                onChange={(e) => handleChange(e)}
               />
+              <label className={styles.formLabel}>{input.label}</label>
+              {errors[input.name] && <p>{errors[input.name]}</p>}
             </div>
-          </form>
-        </div>
+          ))}
+
+          <div>
+            <label className={styles.remaining}>Diet Types: </label>
+            <select onChange={(e) => handleDietChange(e)}>
+              <option hidden value="Recipes">
+                Select here
+              </option>
+              {diets?.map(({ name, id }) => (
+                <option key={id} value={name}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </div>
+          {errors.diets && <p>{errors.diets}</p>}
+
+          {inputs.diets?.map((diet) => (
+            <div className={styles.flexRow} key={diet}>
+              <h4>{diet}</h4>
+              <button
+                onClick={() => handleDelete(diet)}
+                className={styles.deleteBtn}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+
+          <div className={styles.flexRow}>
+            {STRINGS.submitBtns.map((btn) => (
+              <button
+                key={btn.text}
+                type={btn.type}
+                className={styles.btnSubmit}
+                onClick={btn.text === "Clean inputs" && cleanInputs}
+                disabled={
+                  btn.text === "Create Recipe" &&
+                  (errors.diets ||
+                    errors.name ||
+                    errors.summary ||
+                    errors.steps ||
+                    inputs.diets.length === 0)
+                }
+              >
+                {btn.text}
+              </button>
+            ))}
+          </div>
+        </form>
       </div>
     </div>
   );
