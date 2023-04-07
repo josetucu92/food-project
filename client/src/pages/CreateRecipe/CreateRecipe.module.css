@@ -1,0 +1,54 @@
+.formContainer {
+    min-height: 100vh;
+    background-image: url(../Home/Home-img.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+.center {
+    margin: auto;
+    border: 2px solid black;
+    padding: 1.25rem;
+}
+
+.form {
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.formInput {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.formLabel {
+    display: block;
+    transition: all 0.3s;
+    transform: translateY(0rem);
+}
+
+.formContainer p {
+    font-size: 0.8rem;
+    color: red;
+}
+
+.flexRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnSubmit {
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.deleteBtn {
+    border-radius: 7px;
+    padding: 0 0.5rem;
+}
