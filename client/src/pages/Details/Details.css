@@ -1,32 +1,35 @@
 .detail-container {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url(./detail-img.webp);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
 }
 
-h1 u{
+h1 u {
     display: flex;
     justify-content: center;
     padding: 1rem 0;
 }
 
-.summary{
+.summary {
     display: flex;
     justify-content: center;
     padding: 1rem 0;
     /* font-weight: 700; */
-    
+
 }
 
-.summary p{
+.summary p {
     width: 66%;
     text-align: center;
     /* background-color: #87805E; */
 }
 
-.center-detail-content{
+.center-detail-content {
     padding-top: 1rem;
     display: flex;
     justify-content: space-around;
@@ -35,7 +38,7 @@ h1 u{
     height: auto;
 }
 
-.group{
+.group {
     /* background-color: lightgrey; */
     width: 40%;
     display: flex;
@@ -44,7 +47,7 @@ h1 u{
     align-items: center;
 }
 
-.healthscore-dish-detail{
+.healthscore-dish-detail {
     /* background-color: lightskyblue; */
     width: 75%;
     display: flex;
@@ -54,30 +57,30 @@ h1 u{
     padding-bottom: 1rem;
     margin-bottom: 0.25rem;
     border: 1px solid black;
-    
+
 }
 
-img{
+img {
     width: 75%;
     display: flex;
     border-radius: 1rem;
     border: 1px solid black;
 }
 
-.steps-wrapper{
+.steps-wrapper {
     width: 50%;
     display: flex;
 }
 
-.steps-div2{
+.steps-div2 {
     margin: 0.6rem 0;
 }
 
-.steps-details-div p{
+.steps-details-div p {
     border: 1px solid black;
 }
 
-.details-diets{
+.details-diets {
     display: flex;
     flex-direction: row;
     /* background-color: limegreen; */
