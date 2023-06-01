@@ -1,32 +1,33 @@
-.card-container{
-    margin: 0.5rem;
-    width: 20%;
+.card-container {
+    margin: 0 auto;
+    width: 300px;
+    padding-bottom: 3rem;
 }
 
-.card-container h3{
+.card-container h3 {
     font-size: 1.5rem;
     text-align: center;
     border-bottom: 1px solid black;
 }
 
-.card-container img{
+.card-container img {
     width: 100%;
     border-radius: 0.7rem;
 }
 
-.card-diets{
+.diets-container {
     display: grid;
-    grid-template-columns: auto auto auto;
-    border-bottom: 1px solid black;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
-.btn-container-card{
+.btn-container-card {
     display: flex;
     justify-content: center;
 
 }
 
-.btn-card{
+.btn-card {
     text-decoration: none;
     font-size: 1.2rem;
+    margin-top: 1rem;
 }

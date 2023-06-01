@@ -60,21 +60,7 @@ export const HomePage = () => {
                   : el.image
               }
               id={el.id}
-              Diets={
-                el.createdInDb
-                  ? el.Diets?.map((r, i) => (
-                      <ul key={i}>
-                        <li>{r.name}</li>
-                      </ul>
-                    ))
-                  : el.Diets?.map((r, i) => {
-                      return (
-                        <ul key={i}>
-                          <li>{r}</li>
-                        </ul>
-                      );
-                    })
-              }
+              diets={el.Diets}
             />
           );
         })}
